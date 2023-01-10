@@ -1,0 +1,47 @@
+.container {
+    margin-top: 15px;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: left;
+    
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.card {
+    width: 18rem;
+    margin: 15px;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 250px;
+}
+
+img {
+    object-fit: contain;
+    margin-top: 15px;
+}
+
+h4 {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons > .btn {
+    width: 40%;
+    margin-left: 5px;
+    margin-right: 5px;
+}

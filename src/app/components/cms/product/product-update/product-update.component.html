@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>Edit Product</h1>
+  <hr />
+  <div *ngIf="errorMessage !== ''" class="errMessage">
+    <h5>{{ errorMessage }}</h5>
+  </div>
+  <div class="mt-5 d-flex justify-content-center">
+    <div style="width: 400px" class="d-flex justify-content-center">
+      <form
+        *ngIf="productDetails"
+        #productForm="ngForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="text-center">
+          <h2>{{ productDetails.windowType }}</h2>
+          <label for="price">Price</label>
+          <input
+            required
+            type="number"
+            name="price"
+            class="form-control"
+            placeholder="Enter price here"
+            min="1"
+            [(ngModel)]="productDetails.price"
+          />
+          <label for="description">Description</label>
+          <textarea
+            required
+            type="text"
+            name="description"
+            class="form-control"
+            placeholder="Enter description here"
+            [(ngModel)]="productDetails.description"
+          >
+          </textarea>
+        </div>
+        <hr />
+        <div *ngIf="response !== ''; else elseBlock">
+          <div class="text-center">
+            <div>
+              <h5>New Image</h5>
+            </div>
+            <div class="image-wrapper">
+              <img [src]="createImgPath(response)" />
+            </div>
+          </div>
+        </div>
+
+        <ng-template #elseBlock>
+          <div class="text-center">
+            <div>
+              <h5>Current Image</h5>
+            </div>
+            <div class="image-wrapper">
+              <img [src]="createImgPath(productDetails.imageUrl)" />
+            </div>
+          </div>
+        </ng-template>
+        <br />
+        <app-image-upload
+          [id]="id"
+          (onUploadFinished)="uploadFinished($event)"
+        ></app-image-upload>
+        <hr />
+        <div class="buttons">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!productForm.valid"
+          >
+            Update
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            routerLink="/cms/product/list"
+          >
+            Back to List
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

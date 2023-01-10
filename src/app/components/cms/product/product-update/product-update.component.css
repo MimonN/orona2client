@@ -1,0 +1,63 @@
+
+.container {
+    margin-top: 15px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.errMessage {
+    text-align: center;
+    color: red;
+}
+
+.custom-card {
+    padding: 5px;
+    border: 2px solid pink;
+}
+
+label {
+    font-size: large;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+}
+
+img {
+    height: 250px;
+    width: auto;
+}
+
+app-upload-image {
+    padding: 50px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px red solid;
+}
+
+textarea.ng-invalid.ng-touched {
+    border: 1px red solid;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons>button {
+    margin: 0 10px;
+    width: 45%;
+}
+

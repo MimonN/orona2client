@@ -7,18 +7,30 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ProductModule } from './components/cms/product/product.module';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    NavBarComponent
+    NavBarComponent,
+    NotFoundComponent,
+    InternalServerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot()
+    HttpClientModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
