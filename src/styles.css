@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: #81a176;
+}
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.btn-primary {
+    border: solid 1px #215A06;
+    background-color: #215A06;
+}
+
+.btn-primary:hover {
+    border: solid 1px #2e7d07;
+    background-color: #2e7d07;
+}
+
+.btn-primary:disabled {
+    border: solid 1px #2e7d07;
+    background-color: #2e7d07;
+}
