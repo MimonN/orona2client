@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
 import { AuthResponseDto } from 'src/app/interfaces/response/authResponseDto.model';
 import { RegistrationResponseDto } from 'src/app/interfaces/response/registrationResponseDto.model';
@@ -15,7 +16,7 @@ export class AuthenticationService {
   private authChangeSub = new Subject<boolean>();
   public authChanged = this.authChangeSub.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   public registerUser = (route: string, body: UserForRegistrationDto) => {
     return this.http.post<RegistrationResponseDto> (this.createCompleteRoute(route, this.baseApiUrl), body);
@@ -32,6 +33,12 @@ export class AuthenticationService {
 
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
+  }
+
+  public isUserAuthenticated = (): boolean => {
+    const token = localStorage.getItem("token");
+
+    return token && !this.jwtHelper.isTokenExpired(token);
   }
 
   private createCompleteRoute = (route: string, envAddress: string) => {

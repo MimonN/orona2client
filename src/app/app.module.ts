@@ -15,6 +15,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopProductModule } from './components/shop/product/shop-product.module';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -33,7 +38,14 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     ProductModule,
-    ShopProductModule
+    ShopProductModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:5001"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [
     {
