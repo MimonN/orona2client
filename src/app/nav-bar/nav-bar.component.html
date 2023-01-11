@@ -70,15 +70,38 @@
             >Basket</a
           >
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/authentication/register']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Register</a
-          >
-        </li>
+        <ng-container *ngIf="!isUserAuthenticated">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['/authentication/login']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['/authentication/register']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Register</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="isUserAuthenticated">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['/authentication/register']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Logout</a
+            >
+          </li>
+        </ng-container>
+        
       </ul>
     </div>
   </div>
