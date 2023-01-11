@@ -32,6 +32,9 @@ export class ErrorHandlerService {
     else if (error.status === 400){
       return this.handleBadRequest(error);
     }
+    else if (error.status === 401) {
+      return this.handleUnauthorized(error);
+    }
     else {
       this.handleOtherError(error);
     }
@@ -55,6 +58,15 @@ export class ErrorHandlerService {
     }
     else{
       return error.error ? error.error : error.message;
+    }
+  }
+  private handleUnauthorized = (error: HttpErrorResponse) => {
+    if(this.router.url === '/authentication/login') {
+      return 'Authentication failed. Wrong Username or Password';
+    }
+    else {
+      this.router.navigate(['/authentication/login']);
+      return error.message;
     }
   }
   private handleOtherError = (error: HttpErrorResponse) => {
