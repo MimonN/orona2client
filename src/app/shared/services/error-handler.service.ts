@@ -1,19 +1,36 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
   public errorMessage: string = '';
+
   constructor(private router: Router) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(req)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = this.handleError(error);
+        return throwError(() => new Error(errorMessage));
+      })
+    )
+  }
+
   public handleError = (error: HttpErrorResponse) => {
     if (error.status === 500) {
       this.handle500Error(error);
     }
     else if (error.status === 404) {
       this.handle404Error(error)
+    }
+    else if (error.status === 400){
+      return this.handleBadRequest(error);
     }
     else {
       this.handleOtherError(error);
@@ -26,6 +43,19 @@ export class ErrorHandlerService {
   private handle404Error = (error: HttpErrorResponse) => {
     this.createErrorMessage(error);
     this.router.navigate(['/404']);
+  }
+  private handleBadRequest = (error: HttpErrorResponse): string => {
+    if(this.router.url === '/authentication/register'){
+      let message = '';
+      const values = Object.values(error.error.errors);
+      values.map((m: string) => {
+         message += m + '<br>';
+      })
+      return message.slice(0, -4);
+    }
+    else{
+      return error.error ? error.error : error.message;
+    }
   }
   private handleOtherError = (error: HttpErrorResponse) => {
     this.createErrorMessage(error); //TODO: this will be fixed later; 

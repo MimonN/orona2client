@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserForRegistrationDto } from 'src/app/interfaces/user/userForRegistrationDto.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { PasswordConfirmationValidatorService } from 'src/app/shared/services/custom-validators/password-confirmation-validator.service';
 
 @Component({
   selector: 'app-register-user',
@@ -11,8 +12,10 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 })
 export class RegisterUserComponent implements OnInit{
   registerForm: FormGroup;
+  public errorMessage: string = '';
+  public showError: boolean;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService, private passConfValidator: PasswordConfirmationValidatorService) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -22,6 +25,8 @@ export class RegisterUserComponent implements OnInit{
       password: new FormControl('', [Validators.required]),
       confirm: new FormControl(''),
     });
+    this.registerForm.get('confirm').setValidators([Validators.required, 
+      this.passConfValidator.validateConfirmPassword(this.registerForm.get('password'))]);
   }
 
   public validateControl = (controlName: string) => {
@@ -33,6 +38,7 @@ export class RegisterUserComponent implements OnInit{
   }
 
   public registerUser = (registerFormValue) => {
+    this.showError = false;
     const formValues = {...registerFormValue};
 
     const user: UserForRegistrationDto = {
@@ -46,7 +52,10 @@ export class RegisterUserComponent implements OnInit{
     this.authService.registerUser("api/accounts/registration", user)
     .subscribe({
       next: (_) => console.log("Successful registration"), 
-      error: (err: HttpErrorResponse) => console.log(err.error.errors)
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage = err.message;
+        this.showError = true;
+      }
     })
   }
 
