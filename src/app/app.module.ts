@@ -13,6 +13,7 @@ import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ShopProductModule } from './components/shop/product/shop-product.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    ProductModule
+    ProductModule,
+    ShopProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

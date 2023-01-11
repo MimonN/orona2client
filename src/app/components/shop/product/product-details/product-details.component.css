@@ -1,0 +1,64 @@
+.container {
+    padding-top: 20px;
+}
+
+.product {
+    background-color: white;
+    padding: 10px;
+}
+
+.header {
+    background-color: #215a06;
+    color: white;
+    padding: 10px;
+}
+
+.info-box{
+    display: grid;
+    grid-template-columns: auto 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media screen and (max-width: 550px) {
+    .info-box {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+
+h5 {
+    font-weight: 700;
+}
+
+.info {
+    padding: 10px;
+}
+
+.image-box {
+    width: 300px;
+    height: 300px;
+}
+
+img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.btn {
+    margin: 0 30px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="product">
+        <ng-container *ngIf="productDetails">
+            <form #quantityForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="header">
+                    <h5>Window Type: {{productDetails.windowType}}</h5>
+                </div>
+                <div class="info-box">
+                    <div class="info">
+                        <p><strong>Description:</strong></p>
+                        <p>{{productDetails.description}}</p>
+                        <h5>Price: {{productDetails.price | currency}}</h5>
+                        <div class="quantity">
+                            <label for="quantity">Count:</label>
+                            <input type="number" name="quantity" min=1 required class="form-control" ngModel>
+                        </div>
+                    </div>
+                    <div class="image-box">
+                        <img [src]="createImgPath(productDetails.imageUrl)">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" [routerLink]="['/shop/product/list']">Back to List</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!quantityForm.valid">Add to Cart</button>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    
+</div>

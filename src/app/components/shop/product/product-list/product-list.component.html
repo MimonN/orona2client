@@ -1,0 +1,42 @@
+<div class="container">
+  <ng-container *ngIf="productList">
+    <ng-container *ngFor="let product of productList">
+      <div class="product-box">
+        <div class="product-name-box">
+          <h5>{{ product.windowType }}</h5>
+        </div>
+        <div class="image-box">
+          <img [src]="createImgPath(product.imageUrl)" />
+        </div>
+        <div class="button-box">
+          <button
+            class="btn btn-primary btn-lg"
+            [routerLink]="['/shop', 'product', 'details', product.id]"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<!-- <ng-container *ngFor="let product of winType.products">
+    <div class="product-card">
+      <p>Cleaning Type: {{ product.cleaningType.cleaningName }}</p>
+      <p>Price: {{ product.price | currency }}</p>
+      <div>
+        <button
+          class="btn btn-primary"
+          [routerLink]="[
+            '/shop',
+            'product',
+            'product-details',
+            product.id
+          ]"
+        >
+          Details
+        </button>
+      </div>
+    </div>
+  </ng-container> -->
