@@ -25,6 +25,11 @@ export class AuthenticationService {
     return this.http.post<AuthResponseDto>(this.createCompleteRoute(route, this.baseApiUrl), body);
   }
 
+  public logout = () => {
+    localStorage.removeItem("token");
+    this.sendAuthStateChangeNotification(false);
+  }
+
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
   }

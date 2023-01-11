@@ -94,9 +94,8 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              [routerLink]="['/authentication/register']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="logout()"
+              routerLink
               >Logout</a
             >
           </li>
