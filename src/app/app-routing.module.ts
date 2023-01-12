@@ -4,11 +4,12 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminGuard } from './shared/guards/admin.guard';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {path: 'home-page', component: HomePageComponent},
-  {path: 'cms/product', loadChildren: () => import('./components/cms/product/product.module').then(m=>m.ProductModule), canActivate: [AuthGuard]},
+  {path: 'cms/product', loadChildren: () => import('./components/cms/product/product.module').then(m=>m.ProductModule), canActivate: [AuthGuard, AdminGuard]},
   {path: 'shop/product', loadChildren: () => import('./components/shop/product/shop-product.module').then(m=>m.ShopProductModule)},
   {path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
   {path: 'forbidden', component: ForbiddenComponent},
