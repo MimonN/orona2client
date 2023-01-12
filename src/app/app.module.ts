@@ -16,6 +16,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopProductModule } from './components/shop/product/shop-product.module';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -27,7 +28,8 @@ export function tokenGetter() {
     HomePageComponent,
     NavBarComponent,
     NotFoundComponent,
-    InternalServerComponent
+    InternalServerComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
