@@ -49,6 +49,14 @@ export class AuthenticationService {
     return role === 'Admin';
   }
 
+  public getUsername = (): string => {
+    const token = localStorage.getItem("token");
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const name  = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+
+    return name;
+  }
+
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;
   }
