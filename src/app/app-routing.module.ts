@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'home-page', component: HomePageComponent},
   {path: 'cms/product', loadChildren: () => import('./components/cms/product/product.module').then(m=>m.ProductModule), canActivate: [AuthGuard, AdminGuard]},
   {path: 'shop/product', loadChildren: () => import('./components/shop/product/shop-product.module').then(m=>m.ShopProductModule)},
+  {path: 'shop/cart', loadChildren: () => import('./components/shop/cart/cart.module').then(m=>m.CartModule), canActivate: [AuthGuard]},
   {path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
   {path: 'forbidden', component: ForbiddenComponent},
   {path: '404', component: NotFoundComponent},

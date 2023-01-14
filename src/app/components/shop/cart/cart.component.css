@@ -1,0 +1,28 @@
+.container {
+    margin-top: 15px;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.item-box {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    background-color: aliceblue;
+    margin: 10px;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    padding: 15px;
+}

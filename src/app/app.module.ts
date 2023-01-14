@@ -17,6 +17,7 @@ import { ShopProductModule } from './components/shop/product/shop-product.module
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { CartModule } from './components/shop/cart/cart.module';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -47,7 +48,8 @@ export function tokenGetter() {
         allowedDomains: ["localhost:5001"],
         disallowedRoutes: []
       }
-    })
+    }),
+    CartModule
   ],
   providers: [
     {

@@ -12,8 +12,8 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  public getCartItemsByUsername() {
-    return this.http.get<CartItem[]>(this.baseApiUrl + '/api/CartItems/CartItemsByUserName');
+  public getCartItemsByUsername(username: string) {
+    return this.http.get<CartItem[]>(this.baseApiUrl + '/api/CartItems/GetCartItemsByUserName/' + username);
   }
 
   public upsertCartItem(cartItemUpsert: CartItemUpsert) {
