@@ -10,7 +10,10 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class CartComponent implements OnInit {
   username: string;
-  cartItemsList: CartItem[];
+  cartItemsList: CartItem[] = [];
+  itemsPrice: number = 0;
+  tax: number = 0;
+  orderTotal: number = 0;
 
   constructor(private authService: AuthenticationService, private cartRepo: CartService) {}
 
@@ -20,16 +23,20 @@ export class CartComponent implements OnInit {
     .subscribe({
       next: (resp) => {
         this.cartItemsList = resp;
+        this.total();
       },
       error: (err) => {
         console.log(err);
       }
-    })
+    });
   }
 
   addOne(id: number) {
     let item = this.cartItemsList.find(x => x.id === id);
     item.count += 1;
+    this.itemsPrice += item.product.price;
+    this.taxCalculator(this.itemsPrice);
+    this.orderTotalCalculator(this.itemsPrice, this.tax);
   }
 
   minusOne(id: number) {
@@ -38,6 +45,9 @@ export class CartComponent implements OnInit {
       this.remove(id);
     } else {
       item.count -= 1;
+      this.itemsPrice -= item.product.price;
+      this.taxCalculator(this.itemsPrice);
+      this.orderTotalCalculator(this.itemsPrice, this.tax);
     }
   }
 
@@ -50,7 +60,7 @@ export class CartComponent implements OnInit {
     })
   }
 
-  save() {
+  saveAll() {
     this.cartRepo.updateCartItems(this.cartItemsList)
       .subscribe({
         next: (res) => {
@@ -60,6 +70,22 @@ export class CartComponent implements OnInit {
           console.log(err);
         }
       })
+  }
+
+  total() {
+    for(let item of this.cartItemsList){
+      this.itemsPrice += item.count * item.product.price;
+    }
+    this.taxCalculator(this.itemsPrice);
+    this.orderTotalCalculator(this.itemsPrice, this.tax);
+  }
+
+  taxCalculator(price: number) {
+   this.tax = price * 0.0875;
+  }
+
+  orderTotalCalculator(itemsPrice: number, tax: number) {
+    this.orderTotal = itemsPrice + tax;
   }
 
   public createImgPath = (serverPath: string) => {
