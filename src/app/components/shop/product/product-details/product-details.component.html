@@ -1,30 +1,45 @@
 <div class="container">
-    <div class="product">
-        <ng-container *ngIf="productDetails">
-            <form #quantityForm="ngForm" (ngSubmit)="onSubmit()">
-                <div class="header">
-                    <h5>Window Type: {{productDetails.windowType}}</h5>
-                </div>
-                <div class="info-box">
-                    <div class="info">
-                        <p><strong>Description:</strong></p>
-                        <p>{{productDetails.description}}</p>
-                        <h5>Price: {{productDetails.price | currency}}</h5>
-                        <div class="quantity">
-                            <label for="quantity">Count:</label>
-                            <input type="number" name="quantity" min=1 required class="form-control" ngModel>
-                        </div>
-                    </div>
-                    <div class="image-box">
-                        <img [src]="createImgPath(productDetails.imageUrl)">
-                    </div>
-                </div>
-                <div class="buttons">
-                    <button class="btn btn-secondary" [routerLink]="['/shop/product/list']">Back to List</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="!quantityForm.valid">Add to Cart</button>
-                </div>
-            </form>
-        </ng-container>
-    </div>
-    
+  <div class="product">
+    <ng-container *ngIf="productDetails">
+        <div class="header">
+          <h5>Window Type: {{ productDetails.windowType }}</h5>
+        </div>
+        <div class="info-box">
+          <div class="image-box">
+            <img [src]="createImgPath(productDetails.imageUrl)" />
+          </div>
+          <div class="info">
+            <p><strong>Description:</strong></p>
+            <p class="description">{{ productDetails.description }}</p>
+            <h5>Price: {{ productDetails.price | currency }}</h5>
+          </div>
+        </div>
+        <div class="quantity">
+          <h5>Count:</h5>
+          <h5 id="count">{{count}}</h5>
+          <a class="plus" (click)="addOne()">
+            <span class="material-symbols-outlined"> add_circle </span>
+          </a>
+          <a class="minus" (click)="minusOne()">
+            <span class="material-symbols-outlined"> do_not_disturb_on </span>
+          </a>
+          <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+        </div>
+        <div class="buttons">
+          <button
+            class="btn btn-secondary"
+            [routerLink]="['/shop/product/list']"
+          >
+            Back to List
+          </button>
+          <button
+            type="button"
+            routerLink="/shop/cart"
+            class="btn btn-primary orange-btn"
+          >
+            Cart
+          </button>
+        </div>
+    </ng-container>
+  </div>
 </div>

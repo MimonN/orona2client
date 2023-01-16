@@ -8,12 +8,16 @@
     </div>
     <div class="buttons">
       <button id="checkout-btn">Checkout</button>
-      <button id="add-another-item-btn" routerLink="/shop/product/list">Add Another Item</button>
-      <button (click)="saveAll()">Save All</button>
+      <button id="add-another-item-btn" routerLink="/shop/product/list">
+        Add Another Item
+      </button>
+      <button id="saveall" (click)="saveAll()">Save All</button>
     </div>
   </div>
   <hr />
-
+  <ng-container *ngIf="cartItemsList.length === 0">
+    <p id="empty-cart"><strong>There are no items in your shopping cart. Please follow the <button class="btn btn-link" (click)="navigateToShop()">link to add some</button></strong></p>
+  </ng-container>
   <ng-container *ngFor="let item of cartItemsList">
     <div class="item-container">
       <div class="item-title">
@@ -34,13 +38,13 @@
             >
           </p>
           <div class="text-center">
-            <a class="plus" (click)="addOne(item.id)">
+            <a class="plusminus" (click)="addOne(item.id)" title="Add one item">
               <span class="material-symbols-outlined"> add_circle </span>
             </a>
-            <a class="minus" (click)="minusOne(item.id)">
+            <a class="plusminus" (click)="minusOne(item.id)" title="Minus one item">
               <span class="material-symbols-outlined"> do_not_disturb_on </span>
             </a>
-            <a class="remove" (click)="remove(item.id)">
+            <a class="remove" (click)="remove(item.id)" title="Delete items">
               <span class="material-symbols-outlined"> delete </span>
             </a>
           </div>

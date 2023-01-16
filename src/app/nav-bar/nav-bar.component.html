@@ -18,90 +18,45 @@
     </button>
 
     <div
-      class="collapse navbar-collapse"
+      class="collapse navbar-collapse d-lg-flex justify-content-lg-between"
       id="collapseNav"
       [collapse]="!isCollapsed"
       [isAnimated]="true"
     >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <div class="nav-item dropdown" dropdown>
-          <li
-            id="button-basic"
-            dropdownToggle
-            type="button"
-            class="nav-link dropdown-toggle"
-            aria-controls="dropdown-basic"
-          >
-            CMS <span class="caret"></span>
-          </li>
-          <ul
-            id="dropdown-basic"
-            *dropdownMenu
-            class="dropdown-menu"
-            role="menu"
-            aria-labelledby="button-basic"
-          >
-            <li role="menuitem">
-              <a class="dropdown-item" [routerLink]="['/cms/product/list']"
-                >Product</a
-              >
-            </li>
-            <li class="divider dropdown-divider"></li>
-            <li role="menuitem">
-              <a class="dropdown-item" href="#">Separated link</a>
-            </li>
-          </ul>
-        </div>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/shop/product/list']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Shop</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['shop/cart']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Cart</a
-          >
-        </li>
-        <ng-container *ngIf="!isUserAuthenticated">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="['/authentication/login']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Login</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="['/authentication/register']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Register</a
-            >
-          </li>
-        </ng-container>
-        <ng-container *ngIf="isUserAuthenticated">
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              (click)="logout()"
-              routerLink
-              >Logout</a
-            >
-          </li>
-        </ng-container>
-        
-      </ul>
+      <div class="navbar-nav">
+        <a
+          class="nav-link"
+          routerLink="/cms/product/list"
+          routerLinkActive="active"
+          >Admin</a
+        >
+        <a
+          class="nav-link"
+          routerLink="/shop/product/list"
+          routerLinkActive="active"
+          >Shop</a
+        >
+        <a class="nav-link" routerLink="/shop/cart" routerLinkActive="active"
+          >Cart</a
+        >
+      </div>
+      <div *ngIf="!isUserAuthenticated" class="navbar-nav">
+        <a
+          class="nav-link"
+          routerLink="/authentication/login"
+          routerLinkActive="active"
+          >Login</a
+        >
+        <a
+          class="nav-link"
+          routerLink="/authentication/register"
+          routerLinkActive="active"
+          >Register</a
+        >
+      </div>
+      <div *ngIf="isUserAuthenticated" class="navbar-nav">
+        <a class="nav-link" routerLink (click)="logout()">Logout</a>
+      </div>
     </div>
   </div>
 </nav>

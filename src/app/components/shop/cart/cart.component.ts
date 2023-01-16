@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/interfaces/cart-item/cart-item.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit {
   tax: number = 0;
   orderTotal: number = 0;
 
-  constructor(private authService: AuthenticationService, private cartRepo: CartService) {}
+  constructor(private authService: AuthenticationService, private cartRepo: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.username = this.authService.getUsername();
@@ -90,5 +91,9 @@ export class CartComponent implements OnInit {
 
   public createImgPath = (serverPath: string) => {
     return `https://localhost:5001/${serverPath}`;
+  }
+
+  public navigateToShop = () => {
+    this.router.navigate(['/shop/product/list']);
   }
 }

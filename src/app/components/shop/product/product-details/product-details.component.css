@@ -15,10 +15,14 @@
 
 .info-box{
     display: grid;
-    grid-template-columns: auto 300px;
+    grid-template-columns: 300px auto;
     justify-content: space-around;
     align-items: center;
 }
+
+.description {
+    text-align: justify;
+  }
 
 @media screen and (max-width: 550px) {
     .info-box {
@@ -47,18 +51,52 @@ img {
     padding: 20px;
 }
 
+.material-symbols-outlined {
+    font-size: 35px;
+  }
+  
+  .material-symbols-outlined:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    user-select: none;
+  }
+
 .buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
 }
 
-.btn {
+.buttons > .btn {
     margin: 0 30px;
+    width: 250px;
+}
+
+.orange-btn {
+    background-color: orange;
+    border-color: orange;
+}
+
+.orange-btn:hover {
+    background-color: rgb(201, 136, 13);
 }
 
 .quantity {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     font-weight: 700;
+}
+
+#count {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 50px;
+}
+
+input {
+    width: 100px;
 }

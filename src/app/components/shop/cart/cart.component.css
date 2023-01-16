@@ -28,6 +28,15 @@ h1 {
   color: white;
 }
 
+#empty-cart {
+  text-align: center;
+  font-size: 25px;
+}
+
+.btn-link {
+  font-size: 25px;
+}
+
 .buttons {
   display: grid;
   grid-template-columns: 1fr;
@@ -40,11 +49,18 @@ h1 {
 }
 
 #checkout-btn {
-  background-color: yellow;
+  background-color: orange;
+  color: white;
 }
 
 #add-another-item-btn {
-  background-color: rgb(162, 221, 72);
+  background-color: grey;
+  color: white;
+}
+
+#saveall {
+  background-color: #215a06;
+  color: white;
 }
 
 .buttons > button:hover {
@@ -96,15 +112,6 @@ img {
   height: auto;
   object-fit: contain;
   padding: 15px;
-}
-
-.plus {
-  color: #215a06;
-  transform: 2;
-}
-
-.minus {
-  color: orange;
 }
 
 .remove {

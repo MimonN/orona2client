@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItemUpsert } from 'src/app/interfaces/cart-item/cart-item-upsert.model';
 import { Product } from 'src/app/interfaces/product/product.model';
@@ -15,7 +14,7 @@ import { ProductRepositoryService } from 'src/app/shared/services/product-reposi
 export class ProductDetailsComponent {
   id: number;
   productDetails: Product;
-  @ViewChild('quantityForm') form: NgForm;
+  count: number = 1;
   cartItem: CartItemUpsert;
 
   constructor(private route: ActivatedRoute, private productRepo: ProductRepositoryService,
@@ -37,18 +36,29 @@ export class ProductDetailsComponent {
     });
   }
 
-  onSubmit() {
+  addOne() {
+    this.count += 1;
+  }
+
+  minusOne() {
+    if(this.count === 1) {
+      this.count = 1;
+    } else {
+      this.count -=1;
+    }
+  }
+
+  addToCart() {
     if(this.authService.isUserAuthenticated()){
       this.cartItem = {
         productId: this.productDetails.id,
-        count: this.form.value.quantity,
+        count: this.count,
         username: this.authService.getUsername()
       };
       this.cartRepo.upsertCartItem(this.cartItem);
-      console.log(this.cartItem);
+      this.count = 1;
     } else {
       this.router.navigate(['authentication/login']);
-      console.log("???");
     }
     
   }
