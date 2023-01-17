@@ -1,0 +1,37 @@
+.container {
+    padding: 30px;
+}
+
+.hello {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+#hello-text {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hello {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    #hello-text {
+        text-align: center;
+        padding-top: 20px;
+    }
+}
+
+#logo {
+    text-align: center;
+}
+
+#logo > img {
+    justify-content: center;
+    height: auto;
+    width: 250px;
+}
