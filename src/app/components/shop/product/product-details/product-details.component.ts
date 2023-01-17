@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartItemUpsert } from 'src/app/interfaces/cart-item/cart-item-upsert.model';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -18,7 +19,8 @@ export class ProductDetailsComponent {
   cartItem: CartItemUpsert;
 
   constructor(private route: ActivatedRoute, private productRepo: ProductRepositoryService,
-    private cartRepo: CartService, private authService: AuthenticationService, private router: Router) {}
+    private cartRepo: CartService, private authService: AuthenticationService, private router: Router,
+    private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -56,6 +58,7 @@ export class ProductDetailsComponent {
         username: this.authService.getUsername()
       };
       this.cartRepo.upsertCartItem(this.cartItem);
+      this.toastr.success("Item added to your cart");
       this.count = 1;
     } else {
       this.router.navigate(['authentication/login']);

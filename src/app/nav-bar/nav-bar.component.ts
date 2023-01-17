@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../shared/services/authentication.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class NavBarComponent implements OnInit {
   isCollapsed: boolean = false;
   public isUserAuthenticated: boolean;
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(private authService: AuthenticationService, private router: Router, private toastr: ToastrService) {
     this.authService.authChanged
     .subscribe(res => {
       this.isUserAuthenticated = res;
@@ -28,5 +29,6 @@ export class NavBarComponent implements OnInit {
   public logout = () => {
     this.authService.logout();
     this.router.navigate(['/']);
+    this.toastr.success("You have been sucessfully logged out.");
   }
 }

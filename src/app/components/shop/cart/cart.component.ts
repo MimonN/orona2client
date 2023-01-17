@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/interfaces/cart-item/cart-item.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit {
   tax: number = 0;
   orderTotal: number = 0;
 
-  constructor(private authService: AuthenticationService, private cartRepo: CartService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private cartRepo: CartService, private router: Router,
+    private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.username = this.authService.getUsername();
@@ -56,7 +58,8 @@ export class CartComponent implements OnInit {
     this.cartRepo.deleteCartItem(id)
     .subscribe({
       next: () => {
-        window.location.reload();
+        this.resetPage();
+        this.toastr.success("Item removed from you cart");
       }
     })
   }
@@ -64,8 +67,8 @@ export class CartComponent implements OnInit {
   saveAll() {
     this.cartRepo.updateCartItems(this.cartItemsList)
       .subscribe({
-        next: (res) => {
-          // here should be toastr alert
+        next: () => {
+          this.toastr.success("Changes saved");
         }, 
         error: (err) => {
           console.log(err);
@@ -95,5 +98,11 @@ export class CartComponent implements OnInit {
 
   public navigateToShop = () => {
     this.router.navigate(['/shop/product/list']);
+  }
+
+  resetPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/shop/cart']);
   }
 }
