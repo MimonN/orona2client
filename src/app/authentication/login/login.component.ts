@@ -52,4 +52,8 @@ export class LoginComponent {
       this.showError = true;
     }})
   }
+
+  navigateToRegister() {
+    this.router.navigate(['/authentication/register']);
+  }
 }
