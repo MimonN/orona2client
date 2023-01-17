@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CartItemUpsert } from 'src/app/interfaces/cart-item/cart-item-upsert.model';
 import { Product } from 'src/app/interfaces/product/product.model';
@@ -20,7 +21,7 @@ export class ProductDetailsComponent {
 
   constructor(private route: ActivatedRoute, private productRepo: ProductRepositoryService,
     private cartRepo: CartService, private authService: AuthenticationService, private router: Router,
-    private toastr: ToastrService) {}
+    private toastr: ToastrService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -31,6 +32,7 @@ export class ProductDetailsComponent {
           this.productRepo.getProductById(this.id).subscribe({
             next: (response) => {
               this.productDetails = response;
+              this.spinner.hide();
             },
           });
         }

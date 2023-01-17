@@ -19,6 +19,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { CartModule } from './components/shop/cart/cart.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -41,6 +42,7 @@ export function tokenGetter() {
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     ToastrModule.forRoot(),
     ProductModule,
     ShopProductModule,

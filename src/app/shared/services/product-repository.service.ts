@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductCreate } from 'src/app/interfaces/product/product-create.model';
 import { ProductUpdate } from 'src/app/interfaces/product/product-update.model';
 import { Product } from 'src/app/interfaces/product/product.model';
@@ -11,13 +12,15 @@ import { environment } from 'src/environments/environment';
 export class ProductRepositoryService {
   baseApiUrl: string = environment.baseApiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private spinner: NgxSpinnerService) { }
 
   public getAllProducts() {
+    this.spinner.show();
     return this.http.get<Product[]>(this.baseApiUrl + '/api/Products/GetAllProducts');
   }
 
   public getProductById(id: number) {
+    this.spinner.show();
     return this.http.get<Product>(this.baseApiUrl + '/api/Products/GetProductById/' + id);
   }
 

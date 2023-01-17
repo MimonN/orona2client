@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductUpdate } from 'src/app/interfaces/product/product-update.model';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
@@ -20,7 +21,8 @@ export class ProductUpdateComponent {
   id: number;
   errorMessage: string = '';
   
-  constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, private errorHandler: ErrorHandlerService) {}
+  constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, 
+    private errorHandler: ErrorHandlerService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -32,6 +34,7 @@ export class ProductUpdateComponent {
           .subscribe({
             next: (response) => {
               this.productDetails = response;
+              this.spinner.hide();
             }
           })
         }
