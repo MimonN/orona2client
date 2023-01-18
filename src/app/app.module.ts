@@ -20,6 +20,9 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { CartModule } from './components/shop/cart/cart.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FreeEstimateComponent } from './shared/components/free-estimate/free-estimate.component';
+import { FormsModule } from '@angular/forms';
+import { EstimateRequestComponent } from './components/estimate-request/estimate-request.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -32,7 +35,9 @@ export function tokenGetter() {
     NavBarComponent,
     NotFoundComponent,
     InternalServerComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    FreeEstimateComponent,
+    EstimateRequestComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ export function tokenGetter() {
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     ToastrModule.forRoot(),
     ProductModule,
+    FormsModule,
     ShopProductModule,
     JwtModule.forRoot({
       config: {

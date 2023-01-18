@@ -19,6 +19,14 @@
   .nav-link.active {
     color: white;
   }
+
+  .navbar-nav {
+    align-items: center;
+  }
+
+  #free {
+    color: orange;
+  }
   
   
   

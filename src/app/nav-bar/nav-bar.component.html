@@ -24,6 +24,9 @@
       [isAnimated]="true"
     >
       <div class="navbar-nav">
+        <a class="nav-link" routerLink="/home-page" routerLinkActive="active"
+          >Home</a
+        >
         <a
           class="nav-link"
           routerLink="/cms/product/list"
@@ -36,8 +39,17 @@
           routerLinkActive="active"
           >Shop</a
         >
-        <a class="nav-link" routerLink="/shop/cart" routerLinkActive="active"
-          >Cart</a
+        <a class="nav-link" 
+          routerLink="/shop/cart" 
+          routerLinkActive="active"
+          ><span class="material-symbols-outlined">
+            shopping_cart
+            </span></a
+        >
+        <a id="free" class="nav-link" 
+          routerLink="/estimate" 
+          routerLinkActive="active"
+          >Free estimate</a
         >
       </div>
       <div *ngIf="!isUserAuthenticated" class="navbar-nav">
