@@ -30,7 +30,6 @@ export class NavBarComponent implements OnInit {
         this.isUserAuthenticated = res;
         if(this.isUserAuthenticated === true){
           this.isUserAdmin = this.authService.isUserAdmin();
-          console.log(this.isUserAdmin);
         }
       })
   }
