@@ -53,6 +53,9 @@
           >Free estimate</a
         >
       </div>
+      <div *ngIf="username !== '' && isCollapsed === false">
+        <p id="hello" class="navbar-nav"> Hello, {{ username }}!</p>
+      </div>
       <div *ngIf="!isUserAuthenticated" class="navbar-nav">
         <a
           class="nav-link"
