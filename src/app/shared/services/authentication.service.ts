@@ -15,6 +15,8 @@ export class AuthenticationService {
   baseApiUrl: string = environment.baseApiUrl;
   private authChangeSub = new Subject<boolean>();
   public authChanged = this.authChangeSub.asObservable();
+  private authIsAdminSub = new Subject<boolean>();
+  public authIsAdmin = this.authIsAdminSub.asObservable();
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
@@ -47,6 +49,10 @@ export class AuthenticationService {
     const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
     return role === 'Admin';
+  }
+
+  public sendIsUserAdminNotification = (isUserAdmin: boolean) => {
+    this.authIsAdminSub.next(isUserAdmin);
   }
 
   public getUsername = (): string => {

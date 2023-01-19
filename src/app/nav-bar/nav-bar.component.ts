@@ -11,11 +11,16 @@ import { AuthenticationService } from '../shared/services/authentication.service
 export class NavBarComponent implements OnInit {
   isCollapsed: boolean = false;
   public isUserAuthenticated: boolean;
+  public isUserAdmin: boolean;
 
   constructor(private authService: AuthenticationService, private router: Router, private toastr: ToastrService) {
     this.authService.authChanged
     .subscribe(res => {
       this.isUserAuthenticated = res;
+    });
+    this.authService.authIsAdmin
+    .subscribe(res => {
+      this.isUserAdmin = res;
     })
   }
 
@@ -23,6 +28,10 @@ export class NavBarComponent implements OnInit {
     this.authService.authChanged
       .subscribe(res => {
         this.isUserAuthenticated = res;
+        if(this.isUserAuthenticated === true){
+          this.isUserAdmin = this.authService.isUserAdmin();
+          console.log(this.isUserAdmin);
+        }
       })
   }
 

@@ -14,5 +14,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if(this.authService.isUserAuthenticated())
       this.authService.sendAuthStateChangeNotification(true);
+    if(this.authService.isUserAdmin()){
+      this.authService.sendIsUserAdminNotification(true);
+    }
   }
 }

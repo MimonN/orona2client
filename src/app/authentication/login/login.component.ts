@@ -45,6 +45,9 @@ export class LoginComponent {
       next: (res:AuthResponseDto) => {
        localStorage.setItem("token", res.token);
        this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
+       if(this.authService.isUserAdmin()) {
+        this.authService.sendIsUserAdminNotification(true);
+       }
        this.router.navigate([this.returnUrl]);
     },
     error: (err: HttpErrorResponse) => {

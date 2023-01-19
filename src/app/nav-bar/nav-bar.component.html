@@ -27,7 +27,8 @@
         <a class="nav-link" routerLink="/home-page" routerLinkActive="active"
           >Home</a
         >
-        <a
+        <a 
+          *ngIf="isUserAuthenticated && isUserAdmin"
           class="nav-link"
           routerLink="/cms/product/list"
           routerLinkActive="active"
