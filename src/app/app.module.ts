@@ -21,8 +21,9 @@ import { CartModule } from './components/shop/cart/cart.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FreeEstimateComponent } from './shared/components/free-estimate/free-estimate.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EstimateRequestComponent } from './components/estimate-request/estimate-request.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -51,6 +52,7 @@ export function tokenGetter() {
     ToastrModule.forRoot(),
     ProductModule,
     FormsModule,
+    ReactiveFormsModule,
     ShopProductModule,
     JwtModule.forRoot({
       config: {
@@ -59,14 +61,17 @@ export function tokenGetter() {
         disallowedRoutes: []
       }
     }),
-    CartModule
+    CartModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerService,
       multi: true
-    }
+    },
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })
