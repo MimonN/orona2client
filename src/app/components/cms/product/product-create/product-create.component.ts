@@ -40,12 +40,14 @@ export class ProductCreateComponent {
       error: (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
         this.errorMessage = this.errorHandler.errorMessage;
+        console.log(this.errorMessage);
       }
     });
   }
 
   uploadFinished = (event) => {
     this.response = event.dbPath;
+    console.log(this.response);
   };
 
   public createImgPath = (serverPath: string) => {

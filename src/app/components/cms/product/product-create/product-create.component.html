@@ -15,9 +15,10 @@
             name="windowType"
             class="form-control"
             placeholder="Enter window type name here"
-            ngModel
+            ngModel #windowType="ngModel"
           />
-          <label for="price">Price</label>
+          <p class="error-message" *ngIf="windowType.touched && windowType.dirty && windowType.errors?.required">Window type field is required.</p>
+          <label for="price">Price $</label>
           <input
             required
             type="number"
@@ -25,20 +26,32 @@
             class="form-control"
             placeholder="Enter price here"
             min="1"
-            ngModel
+            max="100"
+            maxlength="3"
+            ngModel #price="ngModel"
           />
+          <p class="error-message" *ngIf="price.touched && price.dirty && price.errors?.required">Price field is required</p>
+          <p class="error-message" *ngIf="price.errors?.max">Max value cannot be higher than {{price.errors?.max.max}}</p>
+          <p class="error-message" *ngIf="price.errors?.min">Min value cannnot be less than {{price.errors?.min.min}}</p>
           <label for="description">Description</label>
           <textarea
             required
             type="text"
+            maxlength="150"
             name="description"
             class="form-control"
             placeholder="Enter description here"
-            ngModel
+            ngModel #description="ngModel"
           >
           </textarea>
+          <p class="error-message" *ngIf="description.touched && description.dirty && description.errors?.required">Descritiopn field is required</p>
         </div>
         <hr />
+        <ng-container *ngIf="response === ''">
+          <div id="upload-image">
+            <label >Please upload image</label>
+          </div>
+        </ng-container>
         <div *ngIf="response !== ''" class="image-wrapper">
           <img [src]="createImgPath(response)" />
         </div>
@@ -51,7 +64,7 @@
           <button
             type="submit"
             class="btn btn-primary"
-            [disabled]="!productForm.valid"
+            [disabled]="!productForm.valid || response === ''"
           >
             Create
           </button>
