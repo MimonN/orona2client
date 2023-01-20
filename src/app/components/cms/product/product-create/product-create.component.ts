@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -39,15 +40,13 @@ export class ProductCreateComponent {
       },
       error: (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
-        this.errorMessage = this.errorHandler.errorMessage;
-        console.log(this.errorMessage);
+        this.errorMessage = err.message;
       }
     });
   }
 
   uploadFinished = (event) => {
     this.response = event.dbPath;
-    console.log(this.response);
   };
 
   public createImgPath = (serverPath: string) => {
