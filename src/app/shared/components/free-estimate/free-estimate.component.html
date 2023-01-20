@@ -25,18 +25,18 @@
         estimateForm.controls.name.errors?.minlength
       "
     >
-      The value you inputted i
-      {{ estimateForm.controls.name.errors?.actualLength }} characters long. It
+      The value you inputted is
+      {{ estimateForm.controls.name.errors?.minlength.actualLength }} characters long. It
       must be at least
-      {{ estimateForm.controls.name.errors?.requiredLength }} characters long.
+      {{ estimateForm.controls.name.errors?.minlength.requiredLength }} characters long.
     </p>
     <br />
     <label for="email">Email*</label>
     <input class="form-control" placeholder="Email" formControlName="email" />
     <p
       *ngIf="
-        estimateForm.controls.phone.dirty &&
-        estimateForm.controls.phone.touched &&
+        estimateForm.controls.email.dirty &&
+        estimateForm.controls.email.touched &&
         estimateForm.controls.email.errors?.email
       "
     >
