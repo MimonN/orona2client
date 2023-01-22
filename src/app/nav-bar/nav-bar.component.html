@@ -27,6 +27,17 @@
         <a class="nav-link" routerLink="/home-page" routerLinkActive="active"
           >Home</a
         >
+        <div *ngIf="isUserAuthenticated && isUserAdmin" class="btn-group" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle"
+                  aria-controls="dropdown-basic">
+            Admin <span class="caret"></span>
+          </a>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/cms/estimate/list">Estimate</a></li>
+            <li role="menuitem"><a class="dropdown-item" routerLink="/cms/product/list">Product</a></li>
+          </ul>
+        </div>
         <a 
           class="nav-link"
           routerLink="/cms/estimate/list"

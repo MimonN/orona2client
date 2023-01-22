@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'home-page', component: HomePageComponent},
   {path: 'estimate', component: EstimateRequestComponent},
   {path: 'cms/product', loadChildren: () => import('./components/cms/product/product.module').then(m=>m.ProductModule), canActivate: [AuthGuard, AdminGuard]},
-  {path: 'cms/estimate', loadChildren: () => import('./components/cms/estimate/estimate.module').then(m=>m.EstimateModule)},
+  {path: 'cms/estimate', loadChildren: () => import('./components/cms/estimate/estimate.module').then(m=>m.EstimateModule), canActivate: [AuthGuard, AdminGuard]},
   {path: 'shop/product', loadChildren: () => import('./components/shop/product/shop-product.module').then(m=>m.ShopProductModule)},
   {path: 'shop/cart', loadChildren: () => import('./components/shop/cart/cart.module').then(m=>m.CartModule), canActivate: [AuthGuard]},
   {path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
