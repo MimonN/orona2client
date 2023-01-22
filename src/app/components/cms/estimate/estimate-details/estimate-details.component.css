@@ -1,0 +1,51 @@
+.container {
+    padding-top: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.request-box {
+    background-color: rgb(243, 234, 234);
+    padding: 50px;
+    border-radius: 50px;
+}
+
+#details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 768px) {
+    #details {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+#details-item {
+    padding-top: 15px;
+}
+
+#details-item > p {
+   margin: 0;
+}
+
+form {
+    padding-top: 20px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.btn {
+    width: 100px;
+}
+

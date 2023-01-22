@@ -1,5 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { EstimateCreate } from 'src/app/interfaces/estimate/estimate-create.model';
+import { EstimateService } from '../../services/estimate.service';
 
 @Component({
   selector: 'app-free-estimate',
@@ -8,8 +11,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FreeEstimateComponent implements OnInit {
   estimateForm: FormGroup;
+  estimateCreateRequest: EstimateCreate;
 
-  constructor() {}
+  constructor(private repository: EstimateService, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.estimateForm = new FormGroup({
@@ -21,6 +25,22 @@ export class FreeEstimateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.estimateForm);
+    const formValues = this.estimateForm.value;
+    this.estimateCreateRequest = {
+      name: formValues.name,
+      email: formValues.email,
+      phone: formValues.phone,
+      message: formValues.message
+    };
+
+    this.repository.createEstimate(this.estimateCreateRequest).subscribe({
+      next: () => {
+        this.estimateForm.reset();
+        this.toastr.success("Thank you! Estimate request has been sent.");
+      }, 
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 }

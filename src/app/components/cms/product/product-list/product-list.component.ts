@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
@@ -12,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   productList: Product[];
   errorMessage: string = '';
   modalRef?: BsModalRef;

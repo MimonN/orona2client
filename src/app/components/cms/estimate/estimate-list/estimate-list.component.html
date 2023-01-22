@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Estimate Request List</h1>
+    <hr>
+    <div id="table-box">
+        <table class="table table-hover">
+            <thead>
+                <th>Name</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th>Button</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let estimate of estimateList">
+                    <td>{{estimate.name}}</td>
+                    <td>{{estimate.created | date: 'short'}}</td>
+                    <td>{{estimate.status}}</td>
+                    <td><button class="btn btn-primary" [routerLink]="['/cms/estimate/details', estimate.id]">Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

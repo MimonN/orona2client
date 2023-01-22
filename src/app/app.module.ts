@@ -24,6 +24,7 @@ import { FreeEstimateComponent } from './shared/components/free-estimate/free-es
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EstimateRequestComponent } from './components/estimate-request/estimate-request.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { EstimateModule } from './components/cms/estimate/estimate.module';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -63,7 +64,8 @@ export function tokenGetter() {
     }),
     CartModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    EstimateModule
   ],
   providers: [
     {

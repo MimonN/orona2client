@@ -28,6 +28,12 @@
           >Home</a
         >
         <a 
+          class="nav-link"
+          routerLink="/cms/estimate/list"
+          routerLinkActive="active"
+          >Estimate</a
+        >
+        <a 
           *ngIf="isUserAuthenticated && isUserAdmin"
           class="nav-link"
           routerLink="/cms/product/list"
