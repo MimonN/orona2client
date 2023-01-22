@@ -38,19 +38,6 @@
             <li role="menuitem"><a class="dropdown-item" routerLink="/cms/product/list">Product</a></li>
           </ul>
         </div>
-        <a 
-          class="nav-link"
-          routerLink="/cms/estimate/list"
-          routerLinkActive="active"
-          >Estimate</a
-        >
-        <a 
-          *ngIf="isUserAuthenticated && isUserAdmin"
-          class="nav-link"
-          routerLink="/cms/product/list"
-          routerLinkActive="active"
-          >Admin</a
-        >
         <a
           class="nav-link"
           routerLink="/shop/product/list"
