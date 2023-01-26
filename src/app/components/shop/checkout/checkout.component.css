@@ -60,13 +60,15 @@ input.ng-invalid.ng-touched {
 
 #summary {
     text-align: center;
-    padding-top: 30px;
+    border: black solid 1px;
+    padding: 10px;
 }
 
 #totalPrice {
     font-weight: bold;
     border: solid black 2px;
     background-color: bisque;
+    padding: 5px;
 }
 
 #place-btn {
@@ -81,3 +83,5 @@ input.ng-invalid.ng-touched {
     row-gap: 40px;
   }
 }
+
+
