@@ -26,6 +26,11 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 3fr;
   align-items: center;
+  padding-top: 10px;
+}
+
+.item-box {
+  padding-top: 10px;
 }
 
 .item {
@@ -45,8 +50,17 @@ p {
   padding: 0px;
 }
 
+.error {
+  color: red;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px red solid;
+}
+
 #summary {
     text-align: center;
+    padding-top: 30px;
 }
 
 #totalPrice {
@@ -58,4 +72,12 @@ p {
 #place-btn {
     padding-top: 20px;
     text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+  .info-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
 }
