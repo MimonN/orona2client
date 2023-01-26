@@ -17,7 +17,6 @@ export class CartService {
   }
 
   public upsertCartItem(cartItemUpsert: CartItemUpsert) {
-    console.log("message from cart repo");
     return this.http.post<CartItemUpsert>(this.baseApiUrl + '/api/CartItems/UpsertCartItem', cartItemUpsert)
     .subscribe();
   }
@@ -28,5 +27,9 @@ export class CartService {
 
   public deleteCartItem(id: number) {
     return this.http.delete<CartItem>(this.baseApiUrl + '/api/CartItems/DeleteCartItem/' + id);
+  }
+
+  public removeRange(cartItems: CartItem[]) {
+    return this.http.delete<any>(this.baseApiUrl + '/api/CartItems/RemoveRange', {body: cartItems});
   }
 }

@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'cms/estimate', loadChildren: () => import('./components/cms/estimate/estimate.module').then(m=>m.EstimateModule), canActivate: [AuthGuard, AdminGuard]},
   {path: 'shop/product', loadChildren: () => import('./components/shop/product/shop-product.module').then(m=>m.ShopProductModule)},
   {path: 'shop/cart', loadChildren: () => import('./components/shop/cart/cart.module').then(m=>m.CartModule), canActivate: [AuthGuard]},
+  {path: 'shop/cart/checkout', loadChildren: () => import('./components/shop/checkout/checkout.module').then(m=>m.CheckoutModule), canActivate: [AuthGuard]},
   {path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
   {path: 'forbidden', component: ForbiddenComponent},
   {path: '404', component: NotFoundComponent},

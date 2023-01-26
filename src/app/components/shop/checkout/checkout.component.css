@@ -1,0 +1,61 @@
+.container {
+  padding: 10px;
+  background-color: white;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #215a06;
+  padding: 10px;
+  align-items: center;
+}
+
+h2 {
+  color: white;
+}
+
+.info-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  padding: 20px;
+}
+
+.one-line {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+}
+
+.item {
+  border: solid black 1px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 10px;
+}
+
+#item-price {
+    text-align: end;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#summary {
+    text-align: center;
+}
+
+#totalPrice {
+    font-weight: bold;
+    border: solid black 2px;
+    background-color: bisque;
+}
+
+#place-btn {
+    padding-top: 20px;
+    text-align: end;
+}
