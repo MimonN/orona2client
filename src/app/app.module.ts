@@ -79,7 +79,8 @@ export function tokenGetter() {
       useClass: ErrorHandlerService,
       multi: true
     },
-    provideNgxMask()
+    provideNgxMask(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

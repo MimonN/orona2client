@@ -30,8 +30,9 @@ export class OrderDetailComponent implements OnInit {
     {value: 'Not Paid'},
     {value: 'Pending'}
   ];
+  transformedShippingDate: string;
 
-  constructor(private route: ActivatedRoute, private orderService: OrderControlService, private router: Router, private toastr: ToastrService) {}
+  constructor(private route: ActivatedRoute, private orderService: OrderControlService, private router: Router, private toastr: ToastrService, private datePite: DatePipe) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -56,8 +57,9 @@ export class OrderDetailComponent implements OnInit {
   }
 
   createForm() {
+    this.transformedShippingDate = this.datePite.transform(this.orderHeaderDetails.shippingDate, 'MM/dd/yyyy');
     this.orderForm = new FormGroup({
-      shippingDate: new FormControl(this.orderHeaderDetails.shippingDate),
+      shippingDate: new FormControl(this.transformedShippingDate),
       orderStatus: new FormControl(this.orderHeaderDetails.orderStatus),
       carrier: new FormControl(this.orderHeaderDetails.carrier),
       trackingNumber: new FormControl(this.orderHeaderDetails.trackingNumber),
