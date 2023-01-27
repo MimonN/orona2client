@@ -70,7 +70,6 @@ export class EstimateDetailsComponent implements OnInit {
       note: formValues.note,
       status: formValues.status
     }
-    console.log(this.estimateUpdateRequest);
 
     this.repository.updateEstimate(this.id, this.estimateUpdateRequest).subscribe({
       next: () => {

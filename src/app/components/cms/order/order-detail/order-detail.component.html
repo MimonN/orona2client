@@ -1,0 +1,145 @@
+<div class="container">
+  <h2>Order Details</h2>
+  <hr />
+  <div class="info-container">
+    <!-- Form -->
+    <form
+      *ngIf="orderHeaderDetails"
+      [formGroup]="orderForm"
+      (ngSubmit)="onSubmit()"
+    >
+    <h3>Order State</h3>
+    <hr>
+      <div>
+        <p>
+          <strong>Order Time: </strong
+          >{{ orderHeaderDetails.orderDate | date : "short" }}
+        </p>
+        <br>
+        <p>
+          <strong>Update Time: </strong
+          >{{ orderHeaderDetails.updateTime | date : "short" }}
+        </p>
+        <br>
+        <p>
+          <strong>Order Total: </strong
+          >{{ orderHeaderDetails.orderTotal | currency }}
+        </p>
+      </div>
+      <br>
+      <label for="orderStatus">Order Status</label>
+      <select class="form-select" formControlName="orderStatus">
+        <option *ngFor="let status of orderStatuses" [value]="status.value">
+          {{ status.value }}
+        </option>
+      </select>
+      <br>
+      <label for="paymentStaus">Payment Status</label>
+      <select class="form-select" formControlName="paymentStatus">
+        <option *ngFor="let status of paymentStatuses" [value]="status.value">
+          {{ status.value }}
+        </option>
+      </select>
+      <br>
+      <label for="carrier">Carrier</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="carrier"
+        placeholder="Carrier"
+      />
+      <br>
+      <label for="trackingNumber">Tracking Number</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="trackingNumber"
+        placeholder="Tracking Number"
+      />
+      <br>
+      <label for="shippingDate">Shipping Date</label>
+      <input
+        type="text"
+        placeholder="Shipping Date"
+        class="form-control"
+        bsDatepicker
+        formControlName="shippingDate"
+        [bsConfig]="{ isAnimated: true }"
+      />
+      <br>
+      <label for="note">Note</label>
+      <textarea
+        type="text"
+        class="form-control"
+        placeholder="Note"
+        formControlName="note"
+      ></textarea>
+      <div id="buttons">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" routerLink="/cms/order/list">Back to List</button>
+      </div>
+    </form>
+    <div>
+      <!-- Shipping Details -->
+      <div *ngIf="orderHeaderDetails">
+        <h3>Shipping Details</h3>
+        <hr>
+        <div class="shipping-info">
+          <div class="header-item">
+            <p><strong>Name</strong></p>
+            <p>{{ orderHeaderDetails.name }}</p>
+          </div>
+          <br />
+          <div class="header-item">
+            <p><strong>Email</strong></p>
+            <p>{{ orderHeaderDetails.email }}</p>
+          </div>
+          <div class="header-item">
+            <p><strong>Phone Number</strong></p>
+            <p>{{ orderHeaderDetails.phoneNumber }}</p>
+          </div>
+          <div class="header-item">
+            <p><strong>Street Address</strong></p>
+            <p>{{ orderHeaderDetails.streetAddress }}</p>
+          </div>
+          <div class="header-item">
+            <p><strong>City</strong></p>
+            <p>{{ orderHeaderDetails.city }}</p>
+          </div>
+          <div class="header-item">
+            <p><strong>State</strong></p>
+            <p>{{ orderHeaderDetails.state }}</p>
+          </div>
+          <div class="header-item">
+            <p><strong>Postal Code</strong></p>
+            <p>{{ orderHeaderDetails.postalCode }}</p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- Order Details -->
+      <ng-container *ngIf="orderDetailsList">
+        <h3>Shopping Cart</h3>
+        <hr>
+        <ng-container *ngFor="let item of orderDetailsList">
+          <div class="item-box">
+            <div class="item">
+              <div id="name-count">
+                <p>
+                  <strong>{{ item.product.windowType }}</strong>
+                </p>
+                <p>Quantity: {{ item.count }}</p>
+              </div>
+              <div id="item-price">
+                <p>
+                  <strong>{{ item.product.price | currency }}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

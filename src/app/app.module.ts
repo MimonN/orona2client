@@ -26,6 +26,9 @@ import { EstimateRequestComponent } from './components/estimate-request/estimate
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { EstimateModule } from './components/cms/estimate/estimate.module';
 import { CheckoutModule } from './components/shop/checkout/checkout.module';
+import { OrderModule } from './components/cms/order/order.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -67,7 +70,8 @@ export function tokenGetter() {
     NgxMaskDirective,
     NgxMaskPipe,
     EstimateModule,
-    CheckoutModule
+    CheckoutModule,
+    OrderModule
   ],
   providers: [
     {

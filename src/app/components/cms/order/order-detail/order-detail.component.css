@@ -1,0 +1,71 @@
+.container {
+  padding-top: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.info-container {
+    background-color: aliceblue;
+    border-radius: 30px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .info-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+form {
+    border: solid black 1px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#buttons {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+}
+
+.shipping-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header-item {
+  padding-top: 15px;
+}
+
+.header-item > p {
+  margin: 0;
+}
+
+.item-box {
+  padding-top: 10px;
+}
+
+.item {
+  border: solid black 1px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 10px;
+}
+
+#item-price {
+  text-align: end;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

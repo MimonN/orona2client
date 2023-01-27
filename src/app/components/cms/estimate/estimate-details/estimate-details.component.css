@@ -30,7 +30,7 @@ h2 {
     padding-top: 15px;
 }
 
-#details-item > p {
+.details-item > p {
    margin: 0;
 }
 
