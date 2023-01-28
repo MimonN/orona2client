@@ -1,77 +1,83 @@
 <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a
-        class="navbar-brand"
-        [routerLink]="['/home-page']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Orona Services</a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed"
-        aria-controls="collapseNav"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div
-        class="collapse navbar-collapse"
-        id="collapseNav"
-        [collapse]="!isCollapsed"
-        [isAnimated]="true"
-      >
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <div class="nav-item dropdown" dropdown>
-            <li
-              id="button-basic"
-              dropdownToggle
-              type="button"
-              class="nav-link dropdown-toggle"
-              aria-controls="dropdown-basic"
-            >
-              CMS <span class="caret"></span>
-            </li>
-            <ul
-              id="dropdown-basic"
-              *dropdownMenu
-              class="dropdown-menu"
-              role="menu"
-              aria-labelledby="button-basic"
-            >
-              <li role="menuitem">
-                <a class="dropdown-item" [routerLink]="['/cms/product/list']"
-                  >Product</a
-                >
-              </li>
-              <li class="divider dropdown-divider"></li>
-              <li role="menuitem">
-                <a class="dropdown-item" href="#">Separated link</a>
-              </li>
-            </ul>
-          </div>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="['/shop/product/list']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Shop</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="['/basket']"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Basket</a
-            >
-          </li>
-        </ul>
+  <div class="container">
+    <a
+      class="navbar-brand"
+      [routerLink]="['/home-page']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Orona Services</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse d-lg-flex justify-content-lg-between"
+      id="collapseNav"
+      [collapse]="!isCollapsed"
+      [isAnimated]="true"
+    >
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/home-page" routerLinkActive="active"
+          >Home</a
+        >
+        <div *ngIf="isUserAuthenticated && isUserAdmin" class="btn-group" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle"
+                  aria-controls="dropdown-basic">
+            Admin <span class="caret"></span>
+          </a>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/cms/estimate/list">Estimates</a></li>
+            <li role="menuitem"><a class="dropdown-item" routerLink="/cms/product/list">Products</a></li>
+            <li role="menuitem"><a class="dropdown-item" routerLink="/cms/order/list">Orders</a></li>
+          </ul>
+        </div>
+        <a
+          class="nav-link"
+          routerLink="/shop/product/list"
+          routerLinkActive="active"
+          >Shop</a
+        >
+        <a class="nav-link" 
+          routerLink="/shop/cart" 
+          routerLinkActive="active"
+          ><span class="material-symbols-outlined">
+            shopping_cart
+            </span></a
+        >
+        <a id="free" class="nav-link" 
+          routerLink="/estimate" 
+          routerLinkActive="active"
+          >Free estimate</a
+        >
+      </div>
+      <div *ngIf="username !== '' && isCollapsed === false">
+        <p id="hello" class="navbar-nav"> Hello, {{ username }}!</p>
+      </div>
+      <div *ngIf="!isUserAuthenticated" class="navbar-nav">
+        <a
+          class="nav-link"
+          routerLink="/authentication/login"
+          routerLinkActive="active"
+          >Login</a
+        >
+        <a
+          class="nav-link"
+          routerLink="/authentication/register"
+          routerLinkActive="active"
+          >Register</a
+        >
+      </div>
+      <div *ngIf="isUserAuthenticated" class="navbar-nav">
+        <a class="nav-link" routerLink (click)="logout()">Logout</a>
       </div>
     </div>
-  </nav>
-  
+  </div>
+</nav>

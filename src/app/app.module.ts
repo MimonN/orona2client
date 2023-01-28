@@ -11,9 +11,28 @@ import { ProductModule } from './components/cms/product/product.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopProductModule } from './components/shop/product/shop-product.module';
+import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { CartModule } from './components/shop/cart/cart.module';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { FreeEstimateComponent } from './shared/components/free-estimate/free-estimate.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EstimateRequestComponent } from './components/estimate-request/estimate-request.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { EstimateModule } from './components/cms/estimate/estimate.module';
+import { CheckoutModule } from './components/shop/checkout/checkout.module';
+import { OrderModule } from './components/cms/order/order.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +40,10 @@ import { ShopProductModule } from './components/shop/product/shop-product.module
     HomePageComponent,
     NavBarComponent,
     NotFoundComponent,
-    InternalServerComponent
+    InternalServerComponent,
+    ForbiddenComponent,
+    FreeEstimateComponent,
+    EstimateRequestComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +53,35 @@ import { ShopProductModule } from './components/shop/product/shop-product.module
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    ToastrModule.forRoot(),
     ProductModule,
-    ShopProductModule
+    FormsModule,
+    ReactiveFormsModule,
+    ShopProductModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["mikespotify-001-site1.ftempurl.com"],
+        disallowedRoutes: []
+      }
+    }),
+    CartModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    EstimateModule,
+    CheckoutModule,
+    OrderModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerService,
+      multi: true
+    },
+    provideNgxMask(),
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

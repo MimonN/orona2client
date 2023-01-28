@@ -9,8 +9,23 @@ h1 {
     text-align: left;
 }
 
+#product-box {
+    display: grid;
+    justify-content: center;
+}
+
+.product-box {
+    position: relative;
+    width: 400px;
+    display: grid;
+
+}
+
 h2 {
     font-weight: bold;
+    color: white;
+    background-color: #215a06;
+    padding: 10px;
 }
 
 .errMessage {
@@ -49,6 +64,10 @@ input.ng-invalid.ng-touched {
 
 textarea.ng-invalid.ng-touched {
     border: 1px red solid;
+}
+
+.error-message {
+    color: blue;
 }
 
 .buttons {

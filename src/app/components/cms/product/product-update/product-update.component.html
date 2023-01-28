@@ -4,8 +4,8 @@
   <div *ngIf="errorMessage !== ''" class="errMessage">
     <h5>{{ errorMessage }}</h5>
   </div>
-  <div class="mt-5 d-flex justify-content-center">
-    <div style="width: 400px" class="d-flex justify-content-center">
+  <div id="product-box">
+    <div class="product-box">
       <form
         *ngIf="productDetails"
         #productForm="ngForm"
@@ -21,18 +21,45 @@
             class="form-control"
             placeholder="Enter price here"
             min="1"
+            max="100"
+            maxlength="3"
+            #price="ngModel"
             [(ngModel)]="productDetails.price"
           />
+          <p
+            class="error-message"
+            *ngIf="price.touched && price.dirty && price.errors?.required"
+          >
+            Price field is required
+          </p>
+          <p class="error-message" *ngIf="price.errors?.max">
+            Max value cannot be higher than {{ price.errors?.max.max }}
+          </p>
+          <p class="error-message" *ngIf="price.errors?.min">
+            Min value cannnot be less than {{ price.errors?.min.min }}
+          </p>
           <label for="description">Description</label>
           <textarea
             required
             type="text"
+            maxlength="150"
             name="description"
             class="form-control"
             placeholder="Enter description here"
+            #description="ngModel"
             [(ngModel)]="productDetails.description"
           >
           </textarea>
+          <p
+            class="error-message"
+            *ngIf="
+              description.touched &&
+              description.dirty &&
+              description.errors?.required
+            "
+          >
+            Descritiopn field is required
+          </p>
         </div>
         <hr />
         <div *ngIf="response !== ''; else elseBlock">

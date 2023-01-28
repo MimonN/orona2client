@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-image-upload',
@@ -11,6 +12,7 @@ export class ImageUploadComponent {
   message: string;
   @Output() public onUploadFinished = new EventEmitter();
   @Input() id;
+  baseApi: string = environment.baseApiUrl;
   
   constructor(private http: HttpClient) { }
 
@@ -27,9 +29,9 @@ export class ImageUploadComponent {
 
     let apiUrl;
     if(this.id == null){
-      apiUrl = 'https://localhost:5001/api/upload';
+      apiUrl = this.baseApi + '/api/upload';
     } else {
-      apiUrl = 'https://localhost:5001/api/upload/' + this.id;
+      apiUrl = this.baseApi + '/api/upload/' + this.id;
     }
     
     this.http.post(apiUrl, formData, {reportProgress: true, observe: 'events'})

@@ -2,10 +2,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProductUpdate } from 'src/app/interfaces/product/product-update.model';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-update',
@@ -19,8 +21,10 @@ export class ProductUpdateComponent {
   response: string = '';
   id: number;
   errorMessage: string = '';
+  baseApiUrl = environment.baseApiUrl;
   
-  constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, private errorHandler: ErrorHandlerService) {}
+  constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, 
+    private errorHandler: ErrorHandlerService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -32,6 +36,7 @@ export class ProductUpdateComponent {
           .subscribe({
             next: (response) => {
               this.productDetails = response;
+              this.spinner.hide();
             }
           })
         }
@@ -73,6 +78,6 @@ export class ProductUpdateComponent {
     }
   
     public createImgPath = (serverPath: string) => {
-      return `https://localhost:5001/${serverPath}`;
+      return this.baseApiUrl + `/${serverPath}`;
     }
   }

@@ -11,7 +11,7 @@ h1 {
 
 .errMessage {
     text-align: center;
-    color: red;
+    color: blue;
 }
 
 .custom-card {
@@ -39,12 +39,21 @@ app-upload-image {
     padding: 50px;
 }
 
+#upload-image {
+    text-align: center;
+    color: blue;
+}
+
 input.ng-invalid.ng-touched {
     border: 1px red solid;
 }
 
 textarea.ng-invalid.ng-touched {
     border: 1px red solid;
+}
+
+.error-message {
+    color: blue;
 }
 
 .buttons {

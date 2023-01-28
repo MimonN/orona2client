@@ -1,0 +1,266 @@
+<br />
+<div class="container">
+  <div class="container-header">
+    <h2>Order Summary</h2>
+    <div>
+      <button class="btn btn-secondary" routerLink="/shop/cart">
+        Back to Cart
+      </button>
+    </div>
+  </div>
+  <form *ngIf="orderHeaderForm" [formGroup]="orderHeaderForm">
+    <div class="info-box">
+      <div>
+        <h3>Service Address and Contact Info</h3>
+
+        <div class="one-line">
+          <label for="name">Full name</label>
+          <div>
+            <input
+              class="form-control"
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Example: John Smith"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.name.dirty &&
+                orderHeaderForm.controls.name.touched &&
+                orderHeaderForm.controls.name.errors?.required
+              "
+            >
+              Field is required
+            </p>
+          </div>
+        </div>
+
+        <div class="one-line">
+          <label for="name">Email</label>
+          <div>
+            <input
+              class="form-control"
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="example@example.com"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.email.dirty &&
+                orderHeaderForm.controls.email.touched &&
+                orderHeaderForm.controls.email.errors?.required
+              "
+            >
+              Field is required
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.email.dirty &&
+                orderHeaderForm.controls.email.touched &&
+                orderHeaderForm.controls.email.errors?.email
+              "
+            >
+              Please enter a valid email address.
+            </p>
+          </div>
+        </div>
+
+        <div class="one-line">
+          <label for="phone">Phone number</label>
+          <div>
+            <input
+              class="form-control"
+              id="phone"
+              formControlName="phone"
+              placeholder="(201) 333-4444"
+              mask="(000) 000-0000"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.phone.dirty &&
+                orderHeaderForm.controls.phone.touched &&
+                orderHeaderForm.controls.phone.errors?.required
+              "
+            >
+              Field is required
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.phone.dirty &&
+                orderHeaderForm.controls.phone.touched &&
+                orderHeaderForm.controls.phone.errors?.minlength
+              "
+            >
+              Phone number must be
+              {{
+                orderHeaderForm.controls.phone.errors?.minlength.requiredLength
+              }}
+              digits long.
+            </p>
+          </div>
+        </div>
+
+        <div class="one-line">
+          <label for="streetAddress">Street Address</label>
+          <div>
+            <input
+              class="form-control"
+              id="streetAddress"
+              type="text"
+              formControlName="streetAddress"
+              placeholder="Street Address"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.streetAddress.dirty &&
+                orderHeaderForm.controls.streetAddress.touched &&
+                orderHeaderForm.controls.streetAddress.errors?.required
+              "
+            >
+              Field is required
+            </p>
+          </div>
+        </div>
+          
+        <div class="one-line">
+          <label for="city">City</label>
+          <div>
+            <input
+              class="form-control"
+              id="city"
+              type="text"
+              formControlName="city"
+              placeholder="City"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.city.dirty &&
+                orderHeaderForm.controls.city.touched &&
+                orderHeaderForm.controls.city.errors?.required
+              "
+            >
+              Field is required
+            </p>
+          </div>
+        </div>
+
+        <div class="one-line">
+          <label for="state">State</label>
+          <div>
+            <input
+              class="form-control"
+              id="state"
+              type="text"
+              formControlName="state"
+              placeholder="State"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.state.dirty &&
+                orderHeaderForm.controls.state.touched &&
+                orderHeaderForm.controls.state.errors?.required
+              "
+            >
+              Field is required
+            </p>
+          </div>
+        </div>
+
+        <div class="one-line">
+          <label for="postalCode">Postal Code</label>
+          <div>
+            <input
+              class="form-control"
+              id="postalCode"
+              formControlName="postalCode"
+              placeholder="Postal Code"
+            />
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.postalCode.dirty &&
+                orderHeaderForm.controls.postalCode.touched &&
+                orderHeaderForm.controls.postalCode.errors?.required
+              "
+            >
+              Field is required
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.postalCode.dirty &&
+                orderHeaderForm.controls.postalCode.touched &&
+                orderHeaderForm.controls.postalCode.errors?.minlength
+              "
+            >
+              Postal code must be
+              {{
+                orderHeaderForm.controls.postalCode.errors?.minlength.requiredLength
+              }}
+              digits long.
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.postalCode.dirty &&
+                orderHeaderForm.controls.postalCode.touched &&
+                orderHeaderForm.controls.postalCode.errors?.maxlength
+              "
+            >
+              Postal code must be
+              {{
+                orderHeaderForm.controls.postalCode.errors?.maxlength.requiredLength
+              }}
+              digits long.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Order Summary</h3>
+        <ng-container *ngIf="cartItemList">
+          <ng-container *ngFor="let item of cartItemList">
+            <div class="item-box">
+              <div class="item">
+                <div id="name-count">
+                  <p>
+                    <strong>{{ item.product.windowType }}</strong>
+                  </p>
+                  <p>Quantity: {{ item.count }}</p>
+                </div>
+                <div id="item-price">
+                  <p>
+                    <strong>{{ item.product.price | currency }}</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        <hr>
+        <div id="summary">
+          <p>Items: {{ itemsPrice | currency }}</p>
+          <p>Tax to be collected: {{ tax | currency }}</p>
+          <p id="totalPrice">Order total: {{ orderTotal | currency }}</p>
+        </div>
+        <div id="place-btn">
+          <button
+            (click)="isFormValid()"
+            class="btn btn-primary"
+          >
+            Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

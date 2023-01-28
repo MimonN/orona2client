@@ -1,0 +1,112 @@
+<div class="form-box">
+  <h2>Free Estimate Request</h2>
+  <form [formGroup]="estimateForm">
+    <label for="name">Name*</label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Example: John Smith"
+      id="name"
+      formControlName="name"
+    />
+    <p
+      *ngIf="
+        estimateForm.controls.name.dirty &&
+        estimateForm.controls.name.touched &&
+        estimateForm.controls.name.errors?.required
+      "
+    >
+      Field is required
+    </p>
+    <p
+      *ngIf="
+        estimateForm.controls.name.dirty &&
+        estimateForm.controls.name.touched &&
+        estimateForm.controls.name.errors?.minlength
+      "
+    >
+      The value you inputted is
+      {{ estimateForm.controls.name.errors?.minlength.actualLength }} characters long. It
+      must be at least
+      {{ estimateForm.controls.name.errors?.minlength.requiredLength }} characters long.
+    </p>
+    <br />
+    <label for="email">Email*</label>
+    <input class="form-control" placeholder="example@example.com" formControlName="email" />
+    <p
+      *ngIf="
+        estimateForm.controls.email.dirty &&
+        estimateForm.controls.email.touched &&
+        estimateForm.controls.email.errors?.email
+      "
+    >
+      Please enter a valid email address.
+    </p>
+    <p
+      *ngIf="
+        estimateForm.controls.email.dirty &&
+        estimateForm.controls.email.touched &&
+        estimateForm.controls.email.errors?.required
+      "
+    >
+      Field is required
+    </p>
+    <br />
+    <label for="phone">Phone Number*</label>
+    <br />
+    <input
+      class="form-control"
+      placeholder="(201) 222-4444"
+      formControlName="phone"
+      mask="(000) 000-0000"
+    />
+    <p
+      *ngIf="
+        estimateForm.controls.phone.dirty &&
+        estimateForm.controls.phone.touched &&
+        estimateForm.controls.phone.errors?.required
+      "
+    >
+      Field is required
+    </p>
+    <p
+      *ngIf="
+        estimateForm.controls.phone.dirty &&
+        estimateForm.controls.phone.touched &&
+        estimateForm.controls.phone.errors?.minlength
+      "
+    >
+      Phone number must be
+      {{ estimateForm.controls.phone.errors?.minlength.requiredLength }} digits
+      long.
+    </p>
+    <br />
+    <label for="message">Message</label>
+    <textarea
+      type="text"
+      class="form-control"
+      placeholder="Message"
+      formControlName="message"
+    ></textarea>
+    <p
+      *ngIf="
+        estimateForm.controls.message.dirty &&
+        estimateForm.controls.message.touched &&
+        estimateForm.controls.message.errors?.required
+      "
+    >
+      Field is required
+    </p>
+    <p *ngIf="estimateForm.controls.message.errors?.maxlength">
+      You message have reached maximum amount(120) of characters.
+    </p>
+    <div id="button">
+      <button
+        (click)="isFormValid()"
+        class="btn btn-primary"
+      >
+        Get Estimate
+      </button>
+    </div>
+  </form>
+</div>

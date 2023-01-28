@@ -1,0 +1,27 @@
+.container {
+    margin-top: 15px;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: left;
+}
+
+#table-box {
+    background-color: aliceblue;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+@media screen and (max-width) {
+    
+}
+
+thead {
+    border-bottom: 2px solid;
+}
+
+th {
+    padding-left: 10px;
+}

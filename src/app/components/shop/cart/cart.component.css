@@ -1,0 +1,146 @@
+.container {
+  margin-top: 15px;
+}
+
+.page-title {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.summary {
+  background-color: #215a06;
+  padding: 10px;
+}
+
+.summary > p {
+  margin: -5px;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+}
+
+#empty-cart {
+  text-align: center;
+  font-size: 25px;
+}
+
+.btn-link {
+  font-size: 25px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 40px;
+}
+
+.buttons > button {
+  margin: 3px;
+  border-style: solid;
+}
+
+#checkout-btn {
+  background-color: orange;
+  color: white;
+}
+
+#add-another-item-btn {
+  background-color: grey;
+  color: white;
+}
+
+#saveall {
+  background-color: #215a06;
+  color: white;
+}
+
+.buttons > button:hover {
+    border-style: solid;
+    border-color: black;
+  }
+
+#totalPrice {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.item-container {
+  background-color: aliceblue;
+  margin: 20px 10px;
+  padding: 5px;
+}
+
+.item-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #215a06;
+}
+
+h3 {
+  color: white;
+}
+
+.description {
+  text-align: justify;
+}
+
+.item-box {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin: 10px;
+  align-items: center;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  padding: 15px;
+}
+
+.remove {
+  color: red;
+}
+
+.material-symbols-outlined {
+  font-size: 35px;
+}
+
+.material-symbols-outlined:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .item-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 10px;
+    align-items: center;
+  }
+
+  .page-title {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}

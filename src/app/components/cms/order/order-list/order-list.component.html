@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Orders List</h1>
+    <hr>
+    <div id="table-box">
+        <table class="table table-hover">
+            <thead>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Button</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orderHeadersList">
+                    <td>{{order.name}}</td>
+                    <td>{{order.orderDate | date: 'short'}}</td>
+                    <td>{{order.orderStatus}}</td>
+                    <td><button class="btn btn-primary" [routerLink]="['/cms/order/details', order.id]">Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
