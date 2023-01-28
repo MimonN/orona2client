@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit{
       streetAddress: new FormControl(null, [Validators.required]),
       city: new FormControl(null, [Validators.required]),
       state: new FormControl(null, [Validators.required]),
-      postalCode: new FormControl(null, [Validators.required]),
+      postalCode: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
     });
   }
 
