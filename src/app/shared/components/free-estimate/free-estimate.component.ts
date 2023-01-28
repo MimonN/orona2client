@@ -24,7 +24,15 @@ export class FreeEstimateComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  isFormValid() {
+    if(this.estimateForm.invalid) {
+      this.estimateForm.markAllAsTouched();
+    } else {
+      this.submitForm();
+    }
+  }
+
+  submitForm() {
     const formValues = this.estimateForm.value;
     this.estimateCreateRequest = {
       name: formValues.name,

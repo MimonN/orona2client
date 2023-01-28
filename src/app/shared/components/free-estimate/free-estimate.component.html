@@ -1,11 +1,11 @@
 <div class="form-box">
   <h2>Free Estimate Request</h2>
-  <form [formGroup]="estimateForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="estimateForm">
     <label for="name">Name*</label>
     <input
       class="form-control"
       type="text"
-      placeholder="Name"
+      placeholder="John Smith"
       id="name"
       formControlName="name"
     />
@@ -32,7 +32,7 @@
     </p>
     <br />
     <label for="email">Email*</label>
-    <input class="form-control" placeholder="Email" formControlName="email" />
+    <input class="form-control" placeholder="example@example.com" formControlName="email" />
     <p
       *ngIf="
         estimateForm.controls.email.dirty &&
@@ -56,7 +56,7 @@
     <br />
     <input
       class="form-control"
-      placeholder="Phone number"
+      placeholder="(201) 222-4444"
       formControlName="phone"
       mask="(000) 000-0000"
     />
@@ -102,9 +102,8 @@
     </p>
     <div id="button">
       <button
-        type="submit"
+        (click)="isFormValid()"
         class="btn btn-primary"
-        [disabled]="estimateForm.invalid"
       >
         Get Estimate
       </button>

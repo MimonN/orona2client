@@ -54,6 +54,14 @@ export class CheckoutComponent implements OnInit{
     });
   }
 
+  isFormValid() {
+    if(this.orderHeaderForm.invalid) {
+      this.orderHeaderForm.markAllAsTouched();
+    } else {
+      this.placeOrder();
+    }
+  }
+
   placeOrder() {
     const formValues = this.orderHeaderForm.value;
     this.orderHeaderCreate = {

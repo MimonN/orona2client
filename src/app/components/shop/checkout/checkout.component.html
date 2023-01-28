@@ -227,8 +227,7 @@
         </div>
         <div id="place-btn">
           <button
-            (click)="placeOrder()"
-            [disabled]="!orderHeaderForm.valid || orderTotal === 0"
+            (click)="isFormValid()"
             class="btn btn-primary"
           >
             Place Order
