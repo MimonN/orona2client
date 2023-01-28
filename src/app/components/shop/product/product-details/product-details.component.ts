@@ -7,6 +7,7 @@ import { Product } from 'src/app/interfaces/product/product.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -18,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   productDetails: Product;
   count: number = 1;
   cartItem: CartItemUpsert;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private route: ActivatedRoute, private productRepo: ProductRepositoryService,
     private cartRepo: CartService, private authService: AuthenticationService, private router: Router,
@@ -69,7 +71,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return this.baseApiUrl + `/${serverPath}`;
   };
 
 }

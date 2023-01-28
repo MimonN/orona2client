@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -10,6 +11,7 @@ import { ProductRepositoryService } from 'src/app/shared/services/product-reposi
 })
 export class ProductListComponent {
   productList: Product[];
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private productRepo: ProductRepositoryService, private spinner: NgxSpinnerService) {}
 
@@ -24,6 +26,6 @@ export class ProductListComponent {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return this.baseApiUrl + `/${serverPath}`;
   };
 }

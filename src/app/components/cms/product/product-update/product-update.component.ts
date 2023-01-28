@@ -7,6 +7,7 @@ import { ProductUpdate } from 'src/app/interfaces/product/product-update.model';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-update',
@@ -20,6 +21,7 @@ export class ProductUpdateComponent {
   response: string = '';
   id: number;
   errorMessage: string = '';
+  baseApiUrl = environment.baseApiUrl;
   
   constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, 
     private errorHandler: ErrorHandlerService, private spinner: NgxSpinnerService) {}
@@ -76,6 +78,6 @@ export class ProductUpdateComponent {
     }
   
     public createImgPath = (serverPath: string) => {
-      return `https://localhost:5001/${serverPath}`;
+      return this.baseApiUrl + `/${serverPath}`;
     }
   }

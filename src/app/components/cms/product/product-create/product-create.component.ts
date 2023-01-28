@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ProductCreate } from 'src/app/interfaces/product/product-create.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-create',
@@ -19,6 +20,7 @@ export class ProductCreateComponent {
   @ViewChild('productForm') form: NgForm;
   response: string = '';
   errorMessage: string = '';
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(
     private repository: ProductRepositoryService,
@@ -50,6 +52,6 @@ export class ProductCreateComponent {
   };
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return this.baseApiUrl + `/${serverPath}`;
   };
 }

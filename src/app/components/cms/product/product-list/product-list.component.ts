@@ -6,6 +6,7 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +18,7 @@ export class ProductListComponent implements OnInit {
   errorMessage: string = '';
   modalRef?: BsModalRef;
   message?: string;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private repository: ProductRepositoryService, private errorHandler: ErrorHandlerService, private router: Router, 
     private modalService: BsModalService, private spinner: NgxSpinnerService) {}
@@ -63,6 +65,6 @@ export class ProductListComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return this.baseApiUrl + `/${serverPath}`;
   }
 }

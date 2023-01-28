@@ -62,7 +62,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:5001"],
+        allowedDomains: ["mikespotify-001-site1.ftempurl.com"],
         disallowedRoutes: []
       }
     }),

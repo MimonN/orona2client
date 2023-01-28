@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/interfaces/cart-item/cart-item.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -16,6 +17,7 @@ export class CartComponent implements OnInit {
   itemsPrice: number = 0;
   tax: number = 0;
   orderTotal: number = 0;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private authService: AuthenticationService, private cartRepo: CartService, private router: Router,
     private toastr: ToastrService) {}
@@ -93,7 +95,7 @@ export class CartComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return this.baseApiUrl + `/${serverPath}`;
   }
 
   public navigateToShop = () => {
