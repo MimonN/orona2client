@@ -65,6 +65,6 @@ export class ProductListComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return this.baseApiUrl + `/${serverPath}`;
+    return `${environment.baseApiUrl}/${serverPath}`;
   }
 }

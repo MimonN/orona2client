@@ -29,9 +29,9 @@ export class ImageUploadComponent {
 
     let apiUrl;
     if(this.id == null){
-      apiUrl = this.baseApi + '/api/upload';
+      apiUrl = `${environment.baseApiUrl}/api/upload`;
     } else {
-      apiUrl = this.baseApi + '/api/upload/' + this.id;
+      apiUrl = `${environment.baseApiUrl}/api/upload/` + this.id;
     }
     
     this.http.post(apiUrl, formData, {reportProgress: true, observe: 'events'})

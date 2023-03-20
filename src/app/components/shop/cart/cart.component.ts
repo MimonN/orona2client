@@ -95,7 +95,7 @@ export class CartComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return this.baseApiUrl + `/${serverPath}`;
+    return `${environment.baseApiUrl}/${serverPath}`;
   }
 
   public navigateToShop = () => {

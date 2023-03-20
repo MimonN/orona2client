@@ -52,6 +52,6 @@ export class ProductCreateComponent {
   };
 
   public createImgPath = (serverPath: string) => {
-    return this.baseApiUrl + `/${serverPath}`;
+    return `${environment.baseApiUrl}/${serverPath}`;
   };
 }

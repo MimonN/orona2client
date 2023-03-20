@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    baseApiUrl: 'http://mikespotify-001-site1.ftempurl.com'
+    baseApiUrl: 'https://mimonn-002-site1.etempurl.com'
   };

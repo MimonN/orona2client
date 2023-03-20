@@ -78,6 +78,6 @@ export class ProductUpdateComponent {
     }
   
     public createImgPath = (serverPath: string) => {
-      return this.baseApiUrl + `/${serverPath}`;
+      return `${environment.baseApiUrl}/${serverPath}`;
     }
   }
