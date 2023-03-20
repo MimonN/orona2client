@@ -19,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   productDetails: Product;
   count: number = 1;
   cartItem: CartItemUpsert;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private route: ActivatedRoute, private productRepo: ProductRepositoryService,
     private cartRepo: CartService, private authService: AuthenticationService, private router: Router,

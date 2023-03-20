@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   itemsPrice: number = 0;
   tax: number = 0;
   orderTotal: number = 0;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private authService: AuthenticationService, private cartRepo: CartService, private router: Router,
     private toastr: ToastrService) {}

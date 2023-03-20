@@ -20,6 +20,7 @@ export class ProductCreateComponent {
   @ViewChild('productForm') form: NgForm;
   response: string = '';
   errorMessage: string = '';
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(
     private repository: ProductRepositoryService,

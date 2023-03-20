@@ -14,14 +14,14 @@
         <h3>Service Address and Contact Info</h3>
 
         <div class="one-line">
-          <label for="name">Name</label>
+          <label for="name">Full name</label>
           <div>
             <input
               class="form-control"
               id="name"
               type="text"
               formControlName="name"
-              placeholder="Name"
+              placeholder="Example: John Smith"
             />
             <p
               class="error"
@@ -44,7 +44,7 @@
               id="email"
               type="email"
               formControlName="email"
-              placeholder="Email"
+              placeholder="example@example.com"
             />
             <p
               class="error"
@@ -76,7 +76,7 @@
               class="form-control"
               id="phone"
               formControlName="phone"
-              placeholder="Phone number"
+              placeholder="(201) 333-4444"
               mask="(000) 000-0000"
             />
             <p
@@ -181,7 +181,6 @@
             <input
               class="form-control"
               id="postalCode"
-              type="text"
               formControlName="postalCode"
               placeholder="Postal Code"
             />
@@ -194,6 +193,34 @@
               "
             >
               Field is required
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.postalCode.dirty &&
+                orderHeaderForm.controls.postalCode.touched &&
+                orderHeaderForm.controls.postalCode.errors?.minlength
+              "
+            >
+              Postal code must be
+              {{
+                orderHeaderForm.controls.postalCode.errors?.minlength.requiredLength
+              }}
+              digits long.
+            </p>
+            <p
+              class="error"
+              *ngIf="
+                orderHeaderForm.controls.postalCode.dirty &&
+                orderHeaderForm.controls.postalCode.touched &&
+                orderHeaderForm.controls.postalCode.errors?.maxlength
+              "
+            >
+              Postal code must be
+              {{
+                orderHeaderForm.controls.postalCode.errors?.maxlength.requiredLength
+              }}
+              digits long.
             </p>
           </div>
         </div>
@@ -227,8 +254,7 @@
         </div>
         <div id="place-btn">
           <button
-            (click)="placeOrder()"
-            [disabled]="!orderHeaderForm.valid || orderTotal === 0"
+            (click)="isFormValid()"
             class="btn btn-primary"
           >
             Place Order

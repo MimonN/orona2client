@@ -21,6 +21,7 @@ export class ProductUpdateComponent {
   response: string = '';
   id: number;
   errorMessage: string = '';
+  baseApiUrl = environment.baseApiUrl;
   
   constructor(private repository: ProductRepositoryService, private router: Router, private route: ActivatedRoute, 
     private errorHandler: ErrorHandlerService, private spinner: NgxSpinnerService) {}

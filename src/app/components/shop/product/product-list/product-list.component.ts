@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductListComponent {
   productList: Product[];
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private productRepo: ProductRepositoryService, private spinner: NgxSpinnerService) {}
 

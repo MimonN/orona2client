@@ -21,7 +21,6 @@ export class OrderListComponent implements OnInit {
     .subscribe({
       next: (response: OrderHeader[]) => {
         this.orderHeadersList = response;
-        console.log(this.orderHeadersList);
       }
     })
   }

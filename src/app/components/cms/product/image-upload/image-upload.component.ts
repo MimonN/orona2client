@@ -12,6 +12,7 @@ export class ImageUploadComponent {
   message: string;
   @Output() public onUploadFinished = new EventEmitter();
   @Input() id;
+  baseApi: string = environment.baseApiUrl;
   
   constructor(private http: HttpClient) { }
 

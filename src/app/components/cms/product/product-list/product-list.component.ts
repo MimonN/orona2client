@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   errorMessage: string = '';
   modalRef?: BsModalRef;
   message?: string;
+  baseApiUrl = environment.baseApiUrl;
 
   constructor(private repository: ProductRepositoryService, private errorHandler: ErrorHandlerService, private router: Router, 
     private modalService: BsModalService, private spinner: NgxSpinnerService) {}
