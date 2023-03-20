@@ -7,6 +7,7 @@ import { ProductUpdate } from 'src/app/interfaces/product/product-update.model';
 import { Product } from 'src/app/interfaces/product/product.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { ProductRepositoryService } from 'src/app/shared/services/product-repository.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-update',
@@ -76,6 +77,6 @@ export class ProductUpdateComponent {
     }
   
     public createImgPath = (serverPath: string) => {
-      return `https://localhost:5001/${serverPath}`;
+      return `${environment.baseApiUrl}/${serverPath}`;
     }
   }

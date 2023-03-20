@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/interfaces/cart-item/cart-item.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -93,7 +94,7 @@ export class CartComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return `${environment.baseApiUrl}/${serverPath}`;
   }
 
   public navigateToShop = () => {
