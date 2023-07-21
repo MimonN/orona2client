@@ -29,6 +29,7 @@ import { CheckoutModule } from './components/shop/checkout/checkout.module';
 import { OrderModule } from './components/cms/order/order.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -43,7 +44,8 @@ export function tokenGetter() {
     InternalServerComponent,
     ForbiddenComponent,
     FreeEstimateComponent,
-    EstimateRequestComponent
+    EstimateRequestComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +64,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["mimonn-002-site1.etempurl.com"],
-        //allowedDomains: ["localhost:5001"],
+        //allowedDomains: ["mimonn-002-site1.etempurl.com"],
+        allowedDomains: ["localhost:5266"],
         disallowedRoutes: []
       }
     }),

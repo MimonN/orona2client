@@ -73,7 +73,6 @@ export class EstimateDetailsComponent implements OnInit {
 
     this.repository.updateEstimate(this.id, this.estimateUpdateRequest).subscribe({
       next: () => {
-        console.log("what is situation here?");
         this.toastr.success("Estimate request details have been saved");
       }
     })

@@ -15,7 +15,7 @@ export class EstimateService {
   constructor(private http: HttpClient, private spinner: NgxSpinnerService) {}
 
   public getAllEstimates() {
-    this.spinner.show();
+    // this.spinner.show();
     return this.http.get<Estimate[]>(this.baseApiUrl + '/api/EstimateRequests/GetAllEstimates');
   }
 
