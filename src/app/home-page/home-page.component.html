@@ -2,13 +2,22 @@
   <div id="logo">
     <img src="assets/OronaLogoWhite.svg" />
   </div>
-  <h2 class="p-5 text-white">
+  <h2 class="p-5 slogan">See The World in a New Light</h2>
+  <h2 class="p-2 fact-text">
     We provide the best window cleaning service in The Greater New York City
-    Area.
+    Area
   </h2>
+  <div class="p-5">
+    <button
+      class="btn btn-warning fw-bold"
+      [routerLink]="['/shop', 'product', 'list']"
+    >
+      Discover Our Prices
+    </button>
+  </div>
   <div class="d-flex justify-content-center">
     <div class="why-us pt-5" style="width: 300px">
-      <h2>Why us?</h2>
+      <h2 class="fw-bold" style="color: rgb(82, 233, 52)">Why us?</h2>
       <p class="d-flex align-items-center">
         <span class="material-symbols-outlined"> check_box </span> High-quality
         service
@@ -21,10 +30,12 @@
         trained team
       </p>
       <p class="d-flex align-items-center">
-        <span class="material-symbols-outlined"> check_box </span> Always on time
+        <span class="material-symbols-outlined"> check_box </span> Always on
+        time
       </p>
       <p class="d-flex align-items-center">
-        <span class="material-symbols-outlined"> check_box </span> Flexible prices
+        <span class="material-symbols-outlined"> check_box </span> Flexible
+        prices
       </p>
     </div>
   </div>

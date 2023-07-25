@@ -1,12 +1,11 @@
 <div
-  class="d-flex justify-content-center align-items-center flex-column text-center"
+  class="d-flex justify-content-center align-items-center flex-column text-center px-2"
 >
-  <h2 class="fw-bold">Free Estimate Request</h2>
+  <h2 class="fw-bold" style="color: rgb(82, 233, 52)">Free Estimate Request</h2>
   <form class="" [formGroup]="estimateForm">
-    <label class="fw-bold fs-5" for="name">Name*</label>
+    <label class="fw-bold fs-5" for="name">Name</label>
     <input
       class="form-control"
-      style="width: 350px"
       type="text"
       placeholder="Example: John Smith"
       id="name"
@@ -35,10 +34,9 @@
       characters long.
     </p>
     <br />
-    <label class="fw-bold fs-5" for="email">Email*</label>
+    <label class="fw-bold fs-5" for="email">Email</label>
     <input
       class="form-control"
-      style="width: 350px"
       placeholder="example@example.com"
       formControlName="email"
     />
@@ -61,11 +59,10 @@
       Field is required
     </p>
     <br />
-    <label class="fw-bold fs-5" for="phone">Phone Number*</label>
+    <label class="fw-bold fs-5" for="phone">Phone Number</label>
     <br />
     <input
       class="form-control"
-      style="width: 350px"
       placeholder="(201) 222-4444"
       formControlName="phone"
       mask="(000) 000-0000"
@@ -95,7 +92,6 @@
     <textarea
       type="text"
       class="form-control"
-      style="width: 350px"
       placeholder="Message"
       formControlName="message"
     ></textarea>
@@ -112,8 +108,8 @@
       You message have reached maximum amount(120) of characters.
     </p>
     <div class="pt-3">
-      <button (click)="isFormValid()" class="btn btn-primary">
-        Get Estimate
+      <button (click)="isFormValid()" class="btn btn-warning fw-bold">
+        Send Request
       </button>
     </div>
   </form>

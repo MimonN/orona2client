@@ -16,7 +16,7 @@
   </div>
   <hr />
   <ng-container *ngIf="cartItemsList.length === 0">
-    <p id="empty-cart"><strong>There are no items in your shopping cart. Please follow the <button class="btn btn-link" (click)="navigateToShop()">link to add some</button></strong></p>
+    <p id="empty-cart"><strong>There are no items in your shopping cart. Please follow the <button class="btn btn-link text-white" (click)="navigateToShop()">link to add some</button></strong></p>
   </ng-container>
   <ng-container *ngFor="let item of cartItemsList">
     <div class="item-container">

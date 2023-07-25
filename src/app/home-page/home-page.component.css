@@ -3,17 +3,6 @@
   text-align: center;
 }
 
-.hello {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-content: center;
-}
-
-#hello-text {
-  color: white;
-}
-
 #logo {
   text-align: center;
 }
@@ -24,15 +13,22 @@
   width: 250px;
 }
 
-#second {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 50px;
-  text-align: center;
+.slogan {
+  font-size: 48px; /* Set your desired font size */
+  font-weight: bold;
+  background: linear-gradient(45deg, #3b98d1, #8ef1ec, #3b98d1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 2s linear infinite;
 }
 
-.why-us > h2 {
+.fact-text {
+  font-size: 35px; /* Set your desired font size */
   font-weight: bold;
+  background: linear-gradient(45deg, #3b98d1, #8ef1ec, #3b98d1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 2s linear infinite;
 }
 
 .estimate-request {
@@ -43,32 +39,16 @@
 .why-us > p {
   font-size: 25px;
   text-align: start;
+  font-weight: bold;
+  color: rgb(191, 241, 241);
 }
 
 .material-symbols-outlined {
-  color: green;
+  color: rgb(158, 246, 158);
   font-size: 35px;
 }
 
 @media (max-width: 768px) {
-  .hello {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-  }
-
-  #hello-text {
-    text-align: center;
-    padding-top: 70px;
-  }
-
-  #second {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 0;
-    padding-top: 70px;
-  }
-
   .container {
     padding: 50px 0;
   }

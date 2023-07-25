@@ -1,39 +1,37 @@
 .navbar {
-    background-color: #215a06;
-  }
-  
-  .navbar-brand {
-    color: white;
-  }
-  
-  .active {
-    font-weight: bold;
-    font-style: italic;
-    color: #fff;
-  }
-  
-  .nav-link {
-    color: white;
-  }
-  
-  .nav-link.active {
-    color: white;
-  }
+  background-color: #27812a;
+}
 
-  .navbar-nav {
-    align-items: center;
-  }
+.navbar-brand {
+  color: white;
+}
 
-  #free {
-    color: orange;
-  }
+a {
+  font-weight: bold;
+}
 
-  #hello {
-    color: white;
-  }
-  
-  
-  
-  
-  
-  
+.active {
+  font-weight: bold;
+  font-style: italic;
+  color: azure;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link.active {
+  color: white;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+#free {
+  color: orange;
+}
+
+#hello {
+  color: white;
+}

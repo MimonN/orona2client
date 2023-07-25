@@ -1,0 +1,37 @@
+.form-box {
+    min-width: 350px;
+    text-align: center;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+label {
+    color: rgb(191, 241, 241);
+}
+
+.form-control { 
+    background-color: azure;
+}
+
+#button {
+    padding-top: 20px;
+    text-align: right;
+}
+
+input {
+    min-width: 350px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px red solid;
+}
+
+textarea.ng-invalid.ng-touched {
+    border: 2px red solid;
+}
+
+form > p {
+    color: rgb(21, 0, 255);
+}

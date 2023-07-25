@@ -1,4 +1,4 @@
-<div class="container">
+<div class="list-container">
   <ng-container *ngIf="productList">
     <ng-container *ngFor="let product of productList">
       <div class="product-box">
@@ -20,23 +20,3 @@
     </ng-container>
   </ng-container>
 </div>
-
-<!-- <ng-container *ngFor="let product of winType.products">
-    <div class="product-card">
-      <p>Cleaning Type: {{ product.cleaningType.cleaningName }}</p>
-      <p>Price: {{ product.price | currency }}</p>
-      <div>
-        <button
-          class="btn btn-primary"
-          [routerLink]="[
-            '/shop',
-            'product',
-            'product-details',
-            product.id
-          ]"
-        >
-          Details
-        </button>
-      </div>
-    </div>
-  </ng-container> -->

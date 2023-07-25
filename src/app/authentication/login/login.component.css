@@ -1,3 +1,7 @@
+label {
+    font-weight: bold;
+}
+
 em{
     color: #e71515;
     font-weight: bold;
@@ -9,8 +13,8 @@ em{
 
 .card{
     margin-top: 10px;
-    background-color: #fff;
-    box-shadow: 1px 1px 1px #cabcbc;
+    background-color: azure;
+    box-shadow: 3px 3px 6px #cabcbc;
 }
 
 #buttons {

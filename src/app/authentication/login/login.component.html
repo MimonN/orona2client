@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="card">
+<div class="container d-flex justify-content-center pt-5">
+  <div class="card col-11 col-md-9 col-lg-6">
     <div class="card-body">
-      <h1 class="card-title">Login</h1>
+      <h1 class="card-title fw-bold">Login</h1>
 
       <div *ngIf="showError" class="alert alert-danger" role="alert">
         {{ errorMessage }}
@@ -13,66 +13,55 @@
         novalidate
         (ngSubmit)="loginUser(loginForm.value)"
       >
-        <div class="mb-3 row">
-          <label for="username" class="col-form-label col-sm-2"
-            >Username (email):</label
+        <div class="form-group">
+          <label for="username">Username (email):</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-control"
+          />
+          <em
+            *ngIf="
+              validateControl('username') && hasError('username', 'required')
+            "
+            >Username is required</em
           >
-          <div class="col-md-5">
-            <input
-              type="text"
-              id="username"
-              formControlName="username"
-              class="form-control"
-            />
-          </div>
-          <div class="col-md-5">
-            <em
-              *ngIf="
-                validateControl('username') && hasError('username', 'required')
-              "
-              >Username is required</em
-            >
-          </div>
         </div>
-        <div class="mb-3 row">
-          <label for="password" class="col-form-label col-sm-2"
-            >Password:</label
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+          />
+          <em
+            *ngIf="
+              validateControl('password') && hasError('password', 'required')
+            "
+            >Password is required</em
           >
-          <div class="col-md-5">
-            <input
-              type="password"
-              id="password"
-              formControlName="password"
-              class="form-control"
-            />
-          </div>
-          <div class="col-md-5">
-            <em
-              *ngIf="
-                validateControl('password') && hasError('password', 'required')
-              "
-              >Password is required</em
-            >
-          </div>
         </div>
         <br />
-        <div id="buttons">
+        <div class="d-flex justify-content-around">
           <div>
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-warning fw-bold"
               [disabled]="!loginForm.valid"
             >
               Login
             </button>
           </div>
-          <div>
-            <p class="ms-5">
-                No account?
-                <button class="btn btn-link" (click)="navigateToRegister()">
-                  Register!
-                </button>
-              </p>
+          <div class="d-flex justify-content-center">
+            <p class="fw-bold my-auto">No account?</p>
+            <button
+              class="btn btn-primary fw-bold ms-2"
+              (click)="navigateToRegister()"
+            >
+              Register!
+            </button>
           </div>
         </div>
       </form>
